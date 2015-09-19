@@ -217,8 +217,10 @@
 <span id="175">175</span>
 <span id="176">176</span>
 <span id="177">177</span>
+<span id="178">178</span>
 </pre><pre class='rust '>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span> <span class='op'>=</span> <span class='string'>&quot;https://cmsd2.github.io/schemamama_rusqlite/&quot;</span>)]</span>
+
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span> <span class='op'>=</span> <span class='string'>&quot;https://cmsd2.github.io/rust-docs/schemamama_rusqlite/schemamama_rusqlite/&quot;</span>)]</span>
 
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>schemamama</span>;
@@ -356,7 +358,7 @@
 
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>tests</span> {
-    <span class='kw'>use</span> <span class='ident'>super</span>::<span class='op'>*</span>;
+    <span class='kw'>use</span> <span class='ident'>super</span>::{<span class='ident'>SqliteMigration</span>,<span class='ident'>SqliteAdapter</span>};
 
     <span class='kw'>use</span> <span class='ident'>schemamama</span>::{<span class='ident'>Migrator</span>};
     <span class='kw'>use</span> <span class='ident'>rusqlite</span>::{<span class='ident'>SqliteConnection</span>,<span class='ident'>SqliteResult</span>};
