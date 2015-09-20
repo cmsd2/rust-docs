@@ -45,14 +45,23 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-1562' class='srclink' href='../../src/codelauf/commands.rs.html#1-22' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-2314' class='srclink' href='../../src/codelauf/commands.rs.html#1-78' title='goto source code'>[src]</a></span></h1>
 <h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                     <tr class=' module-item'>
                         <td><a class='fn' href='fn.fetch_repo.html'
                                title='codelauf::commands::fetch_repo'>fetch_repo</a></td>
                         <td class='docblock short'>
-                             
+                             <p>open db
+calc repo dir location
+create basic db entry if it doesn&#39;t exist
+clone project if it isn&#39;t already
+otherwise:
+  check remote url matches
+  fetch branch
+  checkout branch
+update db as we go</p>
+
                         </td>
                     </tr>
                 

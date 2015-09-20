@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Repo` struct in crate `codelauf`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Repo">
+
+    <title>codelauf::repo::Repo - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>codelauf</a>::<wbr><a href='index.html'>repo</a></p><script>window.sidebarCurrent = {name: 'Repo', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>codelauf</a>::<wbr><a href='index.html'>repo</a>::<wbr><a class='struct' href=''>Repo</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-3333' class='srclink' href='../../src/codelauf/repo.rs.html#42-48' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Repo {
+    pub path: <a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html' title='std::path::PathBuf'>PathBuf</a>,
+    pub uri: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
+    pub branch: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
+    pub sync_state: <a class='enum' href='../../codelauf/repo/enum.SyncState.html' title='codelauf::repo::SyncState'>SyncState</a>,
+    pub git_repo: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html' title='alloc::rc::Rc'>Rc</a>&lt;<a class='struct' href='../../git2/repo/struct.Repository.html' title='git2::repo::Repository'>Repository</a>&gt;&gt;,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.path'><code>path</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.uri'><code>uri</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.branch'><code>branch</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.sync_state'><code>sync_state</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.git_repo'><code>git_repo</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h3><div class='impl-items'><h4 id='method.new_for_config' class='method'><code>fn <a href='#method.new_for_config' class='fnname'>new_for_config</a>(config: &amp;<a class='struct' href='../../codelauf/config/struct.Config.html' title='codelauf::config::Config'>Config</a>) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a>&gt;</code></h4>
+<h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(path: <a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html' title='std::path::PathBuf'>PathBuf</a>, uri: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, branch: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;, sync_state: <a class='enum' href='../../codelauf/repo/enum.SyncState.html' title='codelauf::repo::SyncState'>SyncState</a>) -&gt; <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h4>
+<h4 id='method.is_cloned' class='method'><code>fn <a href='#method.is_cloned' class='fnname'>is_cloned</a>(&amp;self) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.dot_git_path' class='method'><code>fn <a href='#method.dot_git_path' class='fnname'>dot_git_path</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html' title='std::path::PathBuf'>PathBuf</a></code></h4>
+<h4 id='method.dot_git_exists' class='method'><code>fn <a href='#method.dot_git_exists' class='fnname'>dot_git_exists</a>(&amp;self) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.find_in_db' class='method'><code>fn <a href='#method.find_in_db' class='fnname'>find_in_db</a>(&amp;self, db: &amp;<a class='struct' href='../../codelauf/db/struct.Db.html' title='codelauf::db::Db'>Db</a>) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../codelauf/db/struct.Repository.html' title='codelauf::db::Repository'>Repository</a>&gt;&gt;</code></h4>
+<h4 id='method.find_or_create_in_db' class='method'><code>fn <a href='#method.find_or_create_in_db' class='fnname'>find_or_create_in_db</a>(&amp;mut self, db: &amp;<a class='struct' href='../../codelauf/db/struct.Db.html' title='codelauf::db::Db'>Db</a>) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a class='struct' href='../../codelauf/db/struct.Repository.html' title='codelauf::db::Repository'>Repository</a>&gt;</code></h4>
+<h4 id='method.update_repo_in_db' class='method'><code>fn <a href='#method.update_repo_in_db' class='fnname'>update_repo_in_db</a>(&amp;mut self, db: &amp;<a class='struct' href='../../codelauf/db/struct.Db.html' title='codelauf::db::Db'>Db</a>) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.probe_fs' class='method'><code>fn <a href='#method.probe_fs' class='fnname'>probe_fs</a>(&amp;mut self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.clone_repo' class='method'><code>fn <a href='#method.clone_repo' class='fnname'>clone_repo</a>(&amp;mut self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.open_repo' class='method'><code>fn <a href='#method.open_repo' class='fnname'>open_repo</a>(&amp;mut self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.fetch_repo' class='method'><code>fn <a href='#method.fetch_repo' class='fnname'>fetch_repo</a>(&amp;mut self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.checkout_head' class='method'><code>fn <a href='#method.checkout_head' class='fnname'>checkout_head</a>(&amp;mut self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.pull_repo' class='method'><code>fn <a href='#method.pull_repo' class='fnname'>pull_repo</a>(&amp;mut self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<h4 id='method.git_repo' class='method'><code>fn <a href='#method.git_repo' class='fnname'>git_repo</a>(&amp;self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html' title='alloc::rc::Rc'>Rc</a>&lt;<a class='struct' href='../../git2/repo/struct.Repository.html' title='git2::repo::Repository'>Repository</a>&gt;&gt;</code></h4>
+<h4 id='method.set_state' class='method'><code>fn <a href='#method.set_state' class='fnname'>set_state</a>(&amp;mut self, new_state: <a class='enum' href='../../codelauf/repo/enum.SyncState.html' title='codelauf::repo::SyncState'>SyncState</a>)</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "codelauf";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

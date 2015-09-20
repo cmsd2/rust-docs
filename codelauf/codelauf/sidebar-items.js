@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["commands",""],["config",""],["db",""]]});
+initSidebarItems({"mod":[["commands",""],["config",""],["db",""],["repo",""],["result",""]]});

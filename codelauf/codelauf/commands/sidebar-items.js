@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["fetch_repo",""],["index_repo",""],["init",""],["run_sync",""]]});
+initSidebarItems({"fn":[["fetch_repo","open db calc repo dir location create basic db entry if it doesn't exist clone project if it isn't already otherwise:   check remote url matches   fetch branch   checkout branch update db as we go"],["index_repo",""],["init",""],["run_sync",""]]});

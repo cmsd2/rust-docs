@@ -352,9 +352,9 @@
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>,<span class='ident'>Clone</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>RepoLocation</span> {
-    <span class='ident'>remote</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
-    <span class='ident'>branch</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
-    <span class='ident'>dir</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>remote</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>branch</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>dir</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>RepoLocation</span> {
@@ -443,7 +443,7 @@
     <span class='kw'>match</span> <span class='ident'>env</span>::<span class='ident'>var</span>(<span class='ident'>name</span>) {
         <span class='prelude-val'>Ok</span>(<span class='ident'>val</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>val</span>),
         <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> {
-            <span class='macro'>warn</span><span class='macro'>!</span>(<span class='string'>&quot;error getting environment variable {}: {:?}&quot;</span>, <span class='ident'>name</span>, <span class='ident'>e</span>);
+            <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;not using environment variable {}: {:?}&quot;</span>, <span class='ident'>name</span>, <span class='ident'>e</span>);
             <span class='prelude-val'>None</span>
         }
     }
