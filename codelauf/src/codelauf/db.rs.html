@@ -235,7 +235,6 @@
 <span id="193">193</span>
 <span id="194">194</span>
 <span id="195">195</span>
-<span id="196">196</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>path</span>::<span class='ident'>Path</span>;
 <span class='kw'>use</span> <span class='ident'>rusqlite</span>::{<span class='ident'>SqliteConnection</span>,<span class='ident'>SqliteResult</span>,<span class='ident'>SqliteRow</span>};
@@ -246,7 +245,6 @@
 <span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>Timespec</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>result</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>repo</span>::<span class='ident'>SyncState</span>;
-<span class='kw'>use</span> <span class='ident'>uuid</span>::<span class='ident'>Uuid</span>;
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>,<span class='ident'>Clone</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>DbError</span> {
@@ -267,9 +265,9 @@
 }
 
 <span class='kw'>impl</span> <span class='ident'>Repository</span> {
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new_from_remote</span>(<span class='ident'>uri</span>: <span class='ident'>String</span>, <span class='ident'>branch</span>: <span class='ident'>String</span>, <span class='ident'>path</span>: <span class='ident'>String</span>) <span class='op'>-&gt;</span> <span class='ident'>Repository</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new_from_remote</span>(<span class='ident'>id</span>: <span class='ident'>String</span>, <span class='ident'>uri</span>: <span class='ident'>String</span>, <span class='ident'>branch</span>: <span class='ident'>String</span>, <span class='ident'>path</span>: <span class='ident'>String</span>) <span class='op'>-&gt;</span> <span class='ident'>Repository</span> {
         <span class='ident'>Repository</span> {
-            <span class='ident'>id</span>: <span class='ident'>Uuid</span>::<span class='ident'>new_v4</span>().<span class='ident'>to_string</span>(),
+            <span class='ident'>id</span>: <span class='ident'>id</span>,
             <span class='ident'>uri</span>: <span class='ident'>uri</span>,
             <span class='ident'>branch</span>: <span class='ident'>branch</span>,
             <span class='ident'>path</span>: <span class='ident'>path</span>,

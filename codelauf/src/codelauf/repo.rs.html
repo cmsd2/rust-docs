@@ -360,6 +360,18 @@
 <span id="318">318</span>
 <span id="319">319</span>
 <span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>rc</span>::<span class='ident'>Rc</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>path</span>::{<span class='ident'>PathBuf</span>,<span class='ident'>Path</span>};
@@ -368,6 +380,7 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
 <span class='kw'>use</span> <span class='ident'>git2</span>;
+<span class='kw'>use</span> <span class='ident'>sha1</span>::<span class='ident'>Sha1</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>config</span>::{<span class='ident'>Config</span>,<span class='ident'>RepoLocation</span>};
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>result</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>db</span>;
@@ -403,6 +416,7 @@
 
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Repo</span> {
+    <span class='kw'>pub</span> <span class='ident'>id</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>path</span>: <span class='ident'>PathBuf</span>,
     <span class='kw'>pub</span> <span class='ident'>uri</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>branch</span>: <span class='ident'>String</span>,
@@ -424,14 +438,16 @@
         <span class='kw'>let</span> <span class='ident'>uri</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>repo_loc</span>.<span class='ident'>remote</span>.<span class='ident'>as_ref</span>().<span class='ident'>ok_or</span>(<span class='ident'>RepoError</span>::<span class='ident'>NoRemote</span>));
         <span class='kw'>let</span> <span class='ident'>branch</span> <span class='op'>=</span> <span class='ident'>repo_loc</span>.<span class='ident'>branch</span>.<span class='ident'>clone</span>();
 
-        <span class='prelude-val'>Ok</span>(<span class='ident'>Repo</span>::<span class='ident'>new</span>(<span class='ident'>Repo</span>::<span class='ident'>get_repo_path</span>(<span class='ident'>config</span>, <span class='ident'>repo_loc</span>), <span class='ident'>uri</span>.<span class='ident'>clone</span>(), <span class='ident'>branch</span>, <span class='ident'>SyncState</span>::<span class='ident'>NotCloned</span>))
+        <span class='prelude-val'>Ok</span>(<span class='ident'>Repo</span>::<span class='ident'>new</span>(<span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>Repo</span>::<span class='ident'>get_repo_path</span>(<span class='ident'>config</span>, <span class='ident'>repo_loc</span>)), <span class='ident'>uri</span>.<span class='ident'>clone</span>(), <span class='ident'>branch</span>, <span class='ident'>SyncState</span>::<span class='ident'>NotCloned</span>))
     }
     
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>path</span>: <span class='ident'>PathBuf</span>, <span class='ident'>uri</span>: <span class='ident'>String</span>, <span class='ident'>branch</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>, <span class='ident'>sync_state</span>: <span class='ident'>SyncState</span>) <span class='op'>-&gt;</span> <span class='ident'>Repo</span> {
+        <span class='kw'>let</span> <span class='ident'>branch</span> <span class='op'>=</span> <span class='ident'>branch</span>.<span class='ident'>unwrap_or</span>(<span class='string'>&quot;master&quot;</span>.<span class='ident'>to_string</span>());
         <span class='ident'>Repo</span> {
+            <span class='ident'>id</span>: <span class='ident'>Repo</span>::<span class='ident'>id</span>(<span class='kw-2'>&amp;</span><span class='ident'>uri</span>, <span class='kw-2'>&amp;</span><span class='ident'>branch</span>),
             <span class='ident'>path</span>: <span class='ident'>path</span>,
             <span class='ident'>uri</span>: <span class='ident'>uri</span>,
-            <span class='ident'>branch</span>: <span class='ident'>branch</span>.<span class='ident'>unwrap_or</span>(<span class='string'>&quot;master&quot;</span>.<span class='ident'>to_string</span>()),
+            <span class='ident'>branch</span>: <span class='ident'>branch</span>,
             <span class='ident'>sync_state</span>: <span class='ident'>sync_state</span>,
             <span class='ident'>git_repo</span>: <span class='prelude-val'>None</span>,
             <span class='ident'>commit</span>: <span class='prelude-val'>None</span>,
@@ -499,7 +515,7 @@
                 <span class='kw'>let</span> <span class='ident'>remote_branch</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>branch</span>;
                 <span class='kw'>let</span> <span class='ident'>repo_path</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>path</span>.<span class='ident'>to_str</span>().<span class='ident'>ok_or</span>(<span class='ident'>RepoError</span>::<span class='ident'>PathUnicodeError</span>));
                 
-                <span class='kw'>let</span> <span class='ident'>new_repo</span> <span class='op'>=</span> <span class='ident'>db</span>::<span class='ident'>Repository</span>::<span class='ident'>new_from_remote</span>(<span class='ident'>remote_uri</span>.<span class='ident'>clone</span>(), <span class='ident'>remote_branch</span>.<span class='ident'>clone</span>(), <span class='ident'>repo_path</span>.<span class='ident'>to_string</span>());
+                <span class='kw'>let</span> <span class='ident'>new_repo</span> <span class='op'>=</span> <span class='ident'>db</span>::<span class='ident'>Repository</span>::<span class='ident'>new_from_remote</span>(<span class='self'>self</span>.<span class='ident'>id</span>.<span class='ident'>clone</span>(), <span class='ident'>remote_uri</span>.<span class='ident'>clone</span>(), <span class='ident'>remote_branch</span>.<span class='ident'>clone</span>(), <span class='ident'>repo_path</span>.<span class='ident'>to_string</span>());
                 <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>db</span>.<span class='ident'>insert_repo</span>(<span class='kw-2'>&amp;</span><span class='ident'>new_repo</span>));
                 
                 <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;created db repo entry {:?}&quot;</span>, <span class='ident'>new_repo</span>);
@@ -672,10 +688,18 @@
         <span class='self'>self</span>.<span class='ident'>sync_state</span> <span class='op'>=</span> <span class='ident'>new_state</span>;
     }
 
-    <span class='kw'>fn</span> <span class='ident'>get_repo_path</span>(<span class='ident'>config</span>: <span class='kw-2'>&amp;</span><span class='ident'>Config</span>, <span class='ident'>_repo_loc</span>: <span class='kw-2'>&amp;</span><span class='ident'>RepoLocation</span>) <span class='op'>-&gt;</span> <span class='ident'>PathBuf</span> {
-        <span class='comment'>//TODO: either use hash or derive dir name from repo name in uri</span>
-        <span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>config</span>.<span class='ident'>data_dir</span>).<span class='ident'>join</span>(<span class='string'>&quot;the_repo&quot;</span>.<span class='ident'>to_string</span>())
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_repo_path</span>(<span class='ident'>config</span>: <span class='kw-2'>&amp;</span><span class='ident'>Config</span>, <span class='ident'>repo_loc</span>: <span class='kw-2'>&amp;</span><span class='ident'>RepoLocation</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span><span class='ident'>PathBuf</span><span class='op'>&gt;</span> {
+        <span class='kw'>let</span> <span class='ident'>id</span> <span class='op'>=</span> <span class='ident'>Repo</span>::<span class='ident'>id</span>(<span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>repo_loc</span>.<span class='ident'>get_remote</span>()), <span class='ident'>repo_loc</span>.<span class='ident'>get_branch_or_default</span>());
+        <span class='prelude-val'>Ok</span>(<span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>config</span>.<span class='ident'>data_dir</span>).<span class='ident'>join</span>(<span class='string'>&quot;repos&quot;</span>).<span class='ident'>join</span>(<span class='ident'>id</span>))
     }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>id</span>(<span class='ident'>remote</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>branch</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>h</span> <span class='op'>=</span> <span class='ident'>Sha1</span>::<span class='ident'>new</span>();
+        <span class='ident'>h</span>.<span class='ident'>update</span>(<span class='ident'>remote</span>.<span class='ident'>as_bytes</span>());
+        <span class='ident'>h</span>.<span class='ident'>update</span>(<span class='ident'>branch</span>.<span class='ident'>as_bytes</span>());
+        <span class='ident'>h</span>.<span class='ident'>hexdigest</span>()
+    }
+        
 }
 
 

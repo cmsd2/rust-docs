@@ -45,8 +45,9 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-3350' class='srclink' href='../../src/codelauf/repo.rs.html#42-49' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-3429' class='srclink' href='../../src/codelauf/repo.rs.html#43-51' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Repo {
+    pub id: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
     pub path: <a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html' title='std::path::PathBuf'>PathBuf</a>,
     pub uri: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
     pub branch: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>,
@@ -55,6 +56,7 @@
     pub commit: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;,
 }</pre><h2 class='fields'>Fields</h2>
 <table><tr class='stab '>
+                                  <td id='structfield.id'><code>id</code></td><td></td></tr><tr class='stab '>
                                   <td id='structfield.path'><code>path</code></td><td></td></tr><tr class='stab '>
                                   <td id='structfield.uri'><code>uri</code></td><td></td></tr><tr class='stab '>
                                   <td id='structfield.branch'><code>branch</code></td><td></td></tr><tr class='stab '>
@@ -80,6 +82,8 @@
 <div class='docblock'><p>walks commits from current head to merge-base of self.commit if any</p>
 </div><h4 id='method.git_repo' class='method'><code>fn <a href='#method.git_repo' class='fnname'>git_repo</a>(&amp;self) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html' title='alloc::rc::Rc'>Rc</a>&lt;<a class='struct' href='../../git2/repo/struct.Repository.html' title='git2::repo::Repository'>Repository</a>&gt;&gt;</code></h4>
 <h4 id='method.set_state' class='method'><code>fn <a href='#method.set_state' class='fnname'>set_state</a>(&amp;mut self, new_state: <a class='enum' href='../../codelauf/repo/enum.SyncState.html' title='codelauf::repo::SyncState'>SyncState</a>)</code></h4>
+<h4 id='method.get_repo_path' class='method'><code>fn <a href='#method.get_repo_path' class='fnname'>get_repo_path</a>(config: &amp;<a class='struct' href='../../codelauf/config/struct.Config.html' title='codelauf::config::Config'>Config</a>, repo_loc: &amp;<a class='struct' href='../../codelauf/config/struct.RepoLocation.html' title='codelauf::config::RepoLocation'>RepoLocation</a>) -&gt; <a class='type' href='../../codelauf/result/type.RepoResult.html' title='codelauf::result::RepoResult'>RepoResult</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html' title='std::path::PathBuf'>PathBuf</a>&gt;</code></h4>
+<h4 id='method.id' class='method'><code>fn <a href='#method.id' class='fnname'>id</a>(remote: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, branch: &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
 </div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../codelauf/repo/struct.Repo.html' title='codelauf::repo::Repo'>Repo</a></code></h4>
 <h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
