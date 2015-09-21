@@ -118,6 +118,8 @@
 <span id="76">76</span>
 <span id="77">77</span>
 <span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>config</span>::<span class='ident'>Config</span>;
 <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>db</span>::<span class='ident'>Db</span>;
@@ -165,6 +167,8 @@
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>repo</span>.<span class='ident'>open_repo</span>());
         
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>repo</span>.<span class='ident'>pull_repo</span>());
+
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>repo</span>.<span class='ident'>revwalk</span>());
         
         <span class='ident'>repo</span>.<span class='ident'>update_repo_in_db</span>(<span class='ident'>db</span>)
     } <span class='kw'>else</span> {        

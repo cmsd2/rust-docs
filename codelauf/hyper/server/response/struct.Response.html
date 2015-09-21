@@ -75,8 +75,7 @@ so that the server doesn&#39;t accidentally leave dangling requests.</p>
 <p>This is a shortcut method for when you have a response with a fixed
 size, and would only need a single <code>write</code> call normally.</p>
 
-<h1 id="example" class='section-header'><a
-                           href="#example">Example</a></h1><pre class='rust rust-example-rendered'>
+<h1 id='example' class='section-header'><a href='#example'>Example</a></h1><pre class='rust rust-example-rendered'>
 <span class='kw'>fn</span> <span class='ident'>handler</span>(<span class='ident'>res</span>: <span class='ident'>Response</span>) {
     <span class='ident'>res</span>.<span class='ident'>send</span>(<span class='string'>b&quot;Hello World!&quot;</span>).<span class='ident'>unwrap</span>();
 }</pre>

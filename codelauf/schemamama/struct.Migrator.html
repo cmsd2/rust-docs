@@ -67,27 +67,23 @@ been registered.</p>
 </div><h4 id='method.current_version' class='method'><code>fn <a href='#method.current_version' class='fnname'>current_version</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;</code></h4>
 <div class='docblock'><p>Returns the latest migration version, or <code>None</code> if no migrations have been recorded.</p>
 
-<h2 id="panics" class='section-header'><a
-                           href="#panics">Panics</a></h2>
+<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
 <p>Panics if there is an underlying problem retrieving the current version from the adapter.</p>
 </div><h4 id='method.migrated_versions' class='method'><code>fn <a href='#method.migrated_versions' class='fnname'>migrated_versions</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/btree/set/struct.BTreeSet.html' title='collections::btree::set::BTreeSet'>BTreeSet</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;</code></h4>
 <div class='docblock'><p>Returns a set of the versions of all of the currently applied migrations.</p>
 
-<h2 id="panics" class='section-header'><a
-                           href="#panics">Panics</a></h2>
+<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
 <p>Panics if there is an underlying problem retrieving the current versions from the adapter.</p>
 </div><h4 id='method.down' class='method'><code>fn <a href='#method.down' class='fnname'>down</a>(&amp;self, to: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;)</code></h4>
 <div class='docblock'><p>Rollback to the specified version (exclusive), or rollback to the state before any
 registered migrations were applied if <code>None</code> is specified.</p>
 
-<h2 id="panics" class='section-header'><a
-                           href="#panics">Panics</a></h2>
+<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
 <p>Panics if there is an underlying problem reverting any of the matched migrations.</p>
 </div><h4 id='method.up' class='method'><code>fn <a href='#method.up' class='fnname'>up</a>(&amp;self, to: <a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>)</code></h4>
 <div class='docblock'><p>Migrate to the specified version (inclusive).</p>
 
-<h2 id="panics" class='section-header'><a
-                           href="#panics">Panics</a></h2>
+<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
 <p>Panics if there is an underlying problem applying any of the matched migrations.</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>

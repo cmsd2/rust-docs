@@ -308,6 +308,36 @@
 <span id="266">266</span>
 <span id="267">267</span>
 <span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>rc</span>::<span class='ident'>Rc</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>path</span>::{<span class='ident'>PathBuf</span>,<span class='ident'>Path</span>};
@@ -356,6 +386,7 @@
     <span class='kw'>pub</span> <span class='ident'>branch</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>sync_state</span>: <span class='ident'>SyncState</span>,
     <span class='kw'>pub</span> <span class='ident'>git_repo</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Rc</span><span class='op'>&lt;</span><span class='ident'>git2</span>::<span class='ident'>Repository</span><span class='op'>&gt;&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>commit</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Repo</span> {
@@ -381,6 +412,7 @@
             <span class='ident'>branch</span>: <span class='ident'>branch</span>.<span class='ident'>unwrap_or</span>(<span class='string'>&quot;master&quot;</span>.<span class='ident'>to_string</span>()),
             <span class='ident'>sync_state</span>: <span class='ident'>sync_state</span>,
             <span class='ident'>git_repo</span>: <span class='prelude-val'>None</span>,
+            <span class='ident'>commit</span>: <span class='prelude-val'>None</span>,
         }
     }
 
@@ -460,6 +492,10 @@
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>db_repo</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>find_or_create_in_db</span>(<span class='ident'>db</span>));
 
+        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>commit</span>.<span class='ident'>is_none</span>() {
+            <span class='self'>self</span>.<span class='ident'>commit</span> <span class='op'>=</span> <span class='ident'>db_repo</span>.<span class='ident'>indexed_commit</span>.<span class='ident'>clone</span>();
+        }
+        
         <span class='kw'>match</span> <span class='ident'>db_repo</span>.<span class='ident'>sync_state</span> {
             <span class='ident'>SyncState</span>::<span class='ident'>NotCloned</span> <span class='op'>=&gt;</span> {
                 <span class='ident'>db_repo</span>.<span class='ident'>sync_state</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>sync_state</span>;
@@ -543,7 +579,7 @@
         <span class='ident'>cb</span>.<span class='ident'>force</span>();
 
         <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;checkout {}&quot;</span>, <span class='self'>self</span>.<span class='ident'>branch</span>);
-        <span class='ident'>git_repo</span>.<span class='ident'>checkout_head</span>(<span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>cb</span>)).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>GitError</span>(<span class='ident'>e</span>));
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>checkout_head</span>(<span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>cb</span>)).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>GitError</span>(<span class='ident'>e</span>)));
 
         <span class='prelude-val'>Ok</span>(())
     }
@@ -553,6 +589,30 @@
 
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>checkout_head</span>());
 
+        <span class='prelude-val'>Ok</span>(())
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>revwalk</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
+        <span class='kw'>let</span> <span class='ident'>git_repo</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>git_repo</span>());
+
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>revwalk</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>revwalk</span>());
+
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>revwalk</span>.<span class='ident'>push_head</span>());
+
+        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>commit</span>.<span class='ident'>is_some</span>() {
+            <span class='kw'>let</span> <span class='ident'>old_head</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>revparse_single</span>(<span class='self'>self</span>.<span class='ident'>commit</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>())).<span class='ident'>id</span>();
+            <span class='kw'>let</span> <span class='ident'>current_head</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>head</span>()).<span class='ident'>target</span>().<span class='ident'>unwrap</span>();
+            
+            <span class='kw'>let</span> <span class='ident'>base</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>merge_base</span>(<span class='ident'>old_head</span>, <span class='ident'>current_head</span>));
+            
+            <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>revwalk</span>.<span class='ident'>hide</span>(<span class='ident'>base</span>));
+        }
+
+        <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;commit history:&quot;</span>);
+        <span class='kw'>for</span> <span class='ident'>oid</span> <span class='kw'>in</span> <span class='ident'>revwalk</span> {
+            <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>oid</span>);
+        }
+        
         <span class='prelude-val'>Ok</span>(())
     }
 

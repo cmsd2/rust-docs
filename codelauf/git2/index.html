@@ -47,8 +47,7 @@
             </a>
         </span><a id='src-0' class='srclink' href='../src/git2/lib.rs.html#1-773' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'>
-<h1 id="libgit2-bindings-for-rust" class='section-header'><a
-                           href="#libgit2-bindings-for-rust">libgit2 bindings for Rust</a></h1>
+<h1 id='libgit2-bindings-for-rust' class='section-header'><a href='#libgit2-bindings-for-rust'>libgit2 bindings for Rust</a></h1>
 <p>This library contains bindings to the <a href="https://libgit2.github.com/">libgit2</a> C library which is used
 to manage git repositories. The library itself is a work in progress and is
 likely lacking some bindings here and there, so be warned.</p>
@@ -58,14 +57,12 @@ strives to make using libgit2 as safe as possible. All resource management
 is automatic as well as adding strong types to all interfaces (including
 <code>Result</code>)</p>
 
-<h2 id="creating-a-repository" class='section-header'><a
-                           href="#creating-a-repository">Creating a <code>Repository</code></a></h2>
+<h2 id='creating-a-repository' class='section-header'><a href='#creating-a-repository'>Creating a <code>Repository</code></a></h2>
 <p>The <code>Repository</code> is the source from which almost all other objects in git-rs
 are spawned. A repository can be created through opening, initializing, or
 cloning.</p>
 
-<h3 id="initializing-a-new-repository" class='section-header'><a
-                           href="#initializing-a-new-repository">Initializing a new repository</a></h3>
+<h3 id='initializing-a-new-repository' class='section-header'><a href='#initializing-a-new-repository'>Initializing a new repository</a></h3>
 <p>The <code>init</code> method will create a new repository, assuming one does not
 already exist.</p>
 <pre class='rust rust-example-rendered'>
@@ -76,8 +73,7 @@ already exist.</p>
     <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;failed to init: {}&quot;</span>, <span class='ident'>e</span>),
 };</pre>
 
-<h3 id="opening-an-existing-repository" class='section-header'><a
-                           href="#opening-an-existing-repository">Opening an existing repository</a></h3><pre class='rust rust-example-rendered'>
+<h3 id='opening-an-existing-repository' class='section-header'><a href='#opening-an-existing-repository'>Opening an existing repository</a></h3><pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>git2</span>::<span class='ident'>Repository</span>;
 
 <span class='kw'>let</span> <span class='ident'>repo</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>Repository</span>::<span class='ident'>open</span>(<span class='string'>&quot;/path/to/a/repo&quot;</span>) {
@@ -85,8 +81,7 @@ already exist.</p>
     <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;failed to open: {}&quot;</span>, <span class='ident'>e</span>),
 };</pre>
 
-<h3 id="cloning-an-existing-repository" class='section-header'><a
-                           href="#cloning-an-existing-repository">Cloning an existing repository</a></h3><pre class='rust rust-example-rendered'>
+<h3 id='cloning-an-existing-repository' class='section-header'><a href='#cloning-an-existing-repository'>Cloning an existing repository</a></h3><pre class='rust rust-example-rendered'>
 <span class='kw'>use</span> <span class='ident'>git2</span>::<span class='ident'>Repository</span>;
 
 <span class='kw'>let</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://github.com/alexcrichton/git2-rs&quot;</span>;
@@ -95,8 +90,7 @@ already exist.</p>
     <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;failed to clone: {}&quot;</span>, <span class='ident'>e</span>),
 };</pre>
 
-<h2 id="working-with-a-repository" class='section-header'><a
-                           href="#working-with-a-repository">Working with a <code>Repository</code></a></h2>
+<h2 id='working-with-a-repository' class='section-header'><a href='#working-with-a-repository'>Working with a <code>Repository</code></a></h2>
 <p>All deriviative objects, references, etc are attached to the lifetime of the
 source <code>Repository</code>, to ensure that they do not outlive the repository
 itself.</p>
