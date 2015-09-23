@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-0a35038f75765ae4/git2-0.3.1/src/repo.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/git/checkouts/git2-rs-8b74d411676c498c/ed0573ae4472b3d965b53398e158160442e21013/src/repo.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>repo.rs.html -- source</title>
@@ -1716,6 +1716,104 @@
 <span id="1674">1674</span>
 <span id="1675">1675</span>
 <span id="1676">1676</span>
+<span id="1677">1677</span>
+<span id="1678">1678</span>
+<span id="1679">1679</span>
+<span id="1680">1680</span>
+<span id="1681">1681</span>
+<span id="1682">1682</span>
+<span id="1683">1683</span>
+<span id="1684">1684</span>
+<span id="1685">1685</span>
+<span id="1686">1686</span>
+<span id="1687">1687</span>
+<span id="1688">1688</span>
+<span id="1689">1689</span>
+<span id="1690">1690</span>
+<span id="1691">1691</span>
+<span id="1692">1692</span>
+<span id="1693">1693</span>
+<span id="1694">1694</span>
+<span id="1695">1695</span>
+<span id="1696">1696</span>
+<span id="1697">1697</span>
+<span id="1698">1698</span>
+<span id="1699">1699</span>
+<span id="1700">1700</span>
+<span id="1701">1701</span>
+<span id="1702">1702</span>
+<span id="1703">1703</span>
+<span id="1704">1704</span>
+<span id="1705">1705</span>
+<span id="1706">1706</span>
+<span id="1707">1707</span>
+<span id="1708">1708</span>
+<span id="1709">1709</span>
+<span id="1710">1710</span>
+<span id="1711">1711</span>
+<span id="1712">1712</span>
+<span id="1713">1713</span>
+<span id="1714">1714</span>
+<span id="1715">1715</span>
+<span id="1716">1716</span>
+<span id="1717">1717</span>
+<span id="1718">1718</span>
+<span id="1719">1719</span>
+<span id="1720">1720</span>
+<span id="1721">1721</span>
+<span id="1722">1722</span>
+<span id="1723">1723</span>
+<span id="1724">1724</span>
+<span id="1725">1725</span>
+<span id="1726">1726</span>
+<span id="1727">1727</span>
+<span id="1728">1728</span>
+<span id="1729">1729</span>
+<span id="1730">1730</span>
+<span id="1731">1731</span>
+<span id="1732">1732</span>
+<span id="1733">1733</span>
+<span id="1734">1734</span>
+<span id="1735">1735</span>
+<span id="1736">1736</span>
+<span id="1737">1737</span>
+<span id="1738">1738</span>
+<span id="1739">1739</span>
+<span id="1740">1740</span>
+<span id="1741">1741</span>
+<span id="1742">1742</span>
+<span id="1743">1743</span>
+<span id="1744">1744</span>
+<span id="1745">1745</span>
+<span id="1746">1746</span>
+<span id="1747">1747</span>
+<span id="1748">1748</span>
+<span id="1749">1749</span>
+<span id="1750">1750</span>
+<span id="1751">1751</span>
+<span id="1752">1752</span>
+<span id="1753">1753</span>
+<span id="1754">1754</span>
+<span id="1755">1755</span>
+<span id="1756">1756</span>
+<span id="1757">1757</span>
+<span id="1758">1758</span>
+<span id="1759">1759</span>
+<span id="1760">1760</span>
+<span id="1761">1761</span>
+<span id="1762">1762</span>
+<span id="1763">1763</span>
+<span id="1764">1764</span>
+<span id="1765">1765</span>
+<span id="1766">1766</span>
+<span id="1767">1767</span>
+<span id="1768">1768</span>
+<span id="1769">1769</span>
+<span id="1770">1770</span>
+<span id="1771">1771</span>
+<span id="1772">1772</span>
+<span id="1773">1773</span>
+<span id="1774">1774</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>ffi</span>::{<span class='ident'>CStr</span>, <span class='ident'>CString</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::<span class='ident'>IntoIterator</span>;
@@ -1732,6 +1830,7 @@
 <span class='kw'>use</span> {<span class='ident'>RevparseMode</span>, <span class='ident'>RepositoryInitMode</span>, <span class='ident'>Reflog</span>, <span class='ident'>IntoCString</span>};
 <span class='kw'>use</span> <span class='ident'>build</span>::{<span class='ident'>RepoBuilder</span>, <span class='ident'>CheckoutBuilder</span>};
 <span class='kw'>use</span> <span class='ident'>string_array</span>::<span class='ident'>StringArray</span>;
+<span class='kw'>use</span> <span class='ident'>oid_array</span>::<span class='ident'>OidArray</span>;
 <span class='kw'>use</span> <span class='ident'>util</span>::{<span class='self'>self</span>, <span class='ident'>Binding</span>};
 
 <span class='doccomment'>/// An owned git repository, representing all state associated with the</span>
@@ -2451,9 +2550,9 @@
                   <span class='ident'>tree</span>: <span class='kw-2'>&amp;</span><span class='ident'>Tree</span>,
                   <span class='ident'>parents</span>: <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>Commit</span>]) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Oid</span>, <span class='ident'>Error</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>update_ref</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(::<span class='ident'>opt_cstr</span>(<span class='ident'>update_ref</span>));
-        <span class='kw'>let</span> <span class='ident'>parent_ptrs</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='op'>*</span><span class='kw'>const</span> <span class='ident'>raw</span>::<span class='ident'>git_commit</span><span class='op'>&gt;</span> <span class='op'>=</span>  <span class='ident'>parents</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>p</span><span class='op'>|</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>parent_ptrs</span> <span class='op'>=</span> <span class='ident'>parents</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>p</span><span class='op'>|</span> {
             <span class='ident'>p</span>.<span class='ident'>raw</span>() <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>raw</span>::<span class='ident'>git_commit</span>
-        }).<span class='ident'>collect</span>();
+        }).<span class='ident'>collect</span>::<span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span>_<span class='op'>&gt;&gt;</span>();
         <span class='kw'>let</span> <span class='ident'>message</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>CString</span>::<span class='ident'>new</span>(<span class='ident'>message</span>));
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>raw</span> <span class='op'>=</span> <span class='ident'>raw</span>::<span class='ident'>git_oid</span> { <span class='ident'>id</span>: [<span class='number'>0</span>; <span class='ident'>raw</span>::<span class='ident'>GIT_OID_RAWSZ</span>] };
         <span class='kw'>unsafe</span> {
@@ -2466,7 +2565,7 @@
                                              <span class='ident'>message</span>,
                                              <span class='ident'>tree</span>.<span class='ident'>raw</span>(),
                                              <span class='ident'>parents</span>.<span class='ident'>len</span>() <span class='kw'>as</span> <span class='ident'>size_t</span>,
-                                             <span class='ident'>parent_ptrs</span>.<span class='ident'>as_ptr</span>()));
+                                             <span class='ident'>parent_ptrs</span>.<span class='ident'>as_mut_ptr</span>()));
             <span class='prelude-val'>Ok</span>(<span class='ident'>Binding</span>::<span class='ident'>from_raw</span>(<span class='kw-2'>&amp;</span><span class='ident'>raw</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> _))
         }
     }
@@ -2811,12 +2910,12 @@
                 <span class='ident'>c</span>.<span class='ident'>configure</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>raw_checkout_opts</span>);
             }
 
-            <span class='kw'>let</span> <span class='ident'>commit_ptrs</span> <span class='op'>=</span> <span class='ident'>annotated_commits</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>c</span><span class='op'>|</span> {
+            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>commit_ptrs</span> <span class='op'>=</span> <span class='ident'>annotated_commits</span>.<span class='ident'>iter</span>().<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>c</span><span class='op'>|</span> {
                 <span class='ident'>c</span>.<span class='ident'>raw</span>() <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>raw</span>::<span class='ident'>git_annotated_commit</span>
             }).<span class='ident'>collect</span>::<span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span>_<span class='op'>&gt;&gt;</span>();
 
             <span class='macro'>try_call</span><span class='macro'>!</span>(<span class='ident'>raw</span>::<span class='ident'>git_merge</span>(<span class='self'>self</span>.<span class='ident'>raw</span>,
-                                     <span class='ident'>commit_ptrs</span>.<span class='ident'>as_ptr</span>(),
+                                     <span class='ident'>commit_ptrs</span>.<span class='ident'>as_mut_ptr</span>(),
                                      <span class='ident'>annotated_commits</span>.<span class='ident'>len</span>() <span class='kw'>as</span> <span class='ident'>size_t</span>,
                                      <span class='ident'>merge_opts</span>.<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>o</span><span class='op'>|</span> <span class='ident'>o</span>.<span class='ident'>raw</span>())
                                                .<span class='ident'>unwrap_or</span>(<span class='number'>0</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> _),
@@ -2979,6 +3078,20 @@
             <span class='prelude-val'>Ok</span>(<span class='ident'>Binding</span>::<span class='ident'>from_raw</span>(<span class='kw-2'>&amp;</span><span class='ident'>raw</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw'>const</span> _))
         }
     }
+
+    <span class='doccomment'>/// Find all merge bases between two commits</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>merge_bases</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>one</span>: <span class='ident'>Oid</span>, <span class='ident'>two</span>: <span class='ident'>Oid</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>OidArray</span>, <span class='ident'>Error</span><span class='op'>&gt;</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>arr</span> <span class='op'>=</span> <span class='ident'>raw</span>::<span class='ident'>git_oidarray</span> {
+            <span class='ident'>ids</span>: <span class='number'>0</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>raw</span>::<span class='ident'>git_oid</span>,
+            <span class='ident'>count</span>: <span class='number'>0</span>,
+        };
+        <span class='kw'>unsafe</span> {
+            <span class='macro'>try_call</span><span class='macro'>!</span>(<span class='ident'>raw</span>::<span class='ident'>git_merge_bases</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>arr</span>, <span class='self'>self</span>.<span class='ident'>raw</span>,
+                                          <span class='ident'>one</span>.<span class='ident'>raw</span>(), <span class='ident'>two</span>.<span class='ident'>raw</span>()));
+            <span class='prelude-val'>Ok</span>(<span class='ident'>Binding</span>::<span class='ident'>from_raw</span>(<span class='ident'>arr</span>))
+        }
+    }
+
 
     <span class='doccomment'>/// Count the number of unique commits between two commit objects</span>
     <span class='doccomment'>///</span>
@@ -3212,6 +3325,7 @@
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>tests</span> {
     <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fs</span>;
+    <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>path</span>::<span class='ident'>Path</span>;
     <span class='kw'>use</span> <span class='ident'>tempdir</span>::<span class='ident'>TempDir</span>;
     <span class='kw'>use</span> {<span class='ident'>Repository</span>, <span class='ident'>Oid</span>, <span class='ident'>ObjectType</span>, <span class='ident'>ResetType</span>};
     <span class='kw'>use</span> <span class='ident'>build</span>::<span class='ident'>CheckoutBuilder</span>;
@@ -3369,6 +3483,88 @@
         <span class='kw'>let</span> <span class='ident'>master_oid</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>revparse_single</span>(<span class='string'>&quot;master&quot;</span>).<span class='ident'>unwrap</span>().<span class='ident'>id</span>();
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>repo</span>.<span class='ident'>set_head_detached</span>(<span class='ident'>master_oid</span>).<span class='ident'>is_ok</span>());
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>repo</span>.<span class='ident'>head</span>().<span class='ident'>unwrap</span>().<span class='ident'>target</span>().<span class='ident'>unwrap</span>(), <span class='ident'>master_oid</span>);
+    }
+
+    <span class='doccomment'>/// create an octopus:</span>
+    <span class='doccomment'>///   /---o2-o4</span>
+    <span class='doccomment'>/// o1      X</span>
+    <span class='doccomment'>///   \---o3-o5</span>
+    <span class='doccomment'>/// and checks that the merge bases of (o4,o5) are (o2,o3)</span>
+    <span class='attribute'>#[<span class='ident'>test</span>]</span>
+    <span class='kw'>fn</span> <span class='ident'>smoke_merge_bases</span>() {
+        <span class='kw'>let</span> (<span class='ident'>_td</span>, <span class='ident'>repo</span>) <span class='op'>=</span> <span class='ident'>graph_repo_init</span>();
+        <span class='kw'>let</span> <span class='ident'>sig</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>signature</span>().<span class='ident'>unwrap</span>();
+
+        <span class='comment'>// let oid1 = head</span>
+        <span class='kw'>let</span> <span class='ident'>oid1</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>head</span>().<span class='ident'>unwrap</span>().<span class='ident'>target</span>().<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>commit1</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>find_commit</span>(<span class='ident'>oid1</span>).<span class='ident'>unwrap</span>();
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;created oid1 {:?}&quot;</span>, <span class='ident'>oid1</span>);
+
+        <span class='ident'>repo</span>.<span class='ident'>branch</span>(<span class='string'>&quot;branch_a&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>commit1</span>, <span class='boolval'>true</span>).<span class='ident'>unwrap</span>();
+        <span class='ident'>repo</span>.<span class='ident'>branch</span>(<span class='string'>&quot;branch_b&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>commit1</span>, <span class='boolval'>true</span>).<span class='ident'>unwrap</span>();
+
+        <span class='comment'>// create commit oid2 on branchA</span>
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>index</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>index</span>().<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> <span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='ident'>repo</span>.<span class='ident'>workdir</span>().<span class='ident'>unwrap</span>()).<span class='ident'>join</span>(<span class='string'>&quot;file_a&quot;</span>);
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;using path {:?}&quot;</span>, <span class='ident'>p</span>);
+        <span class='ident'>fs</span>::<span class='ident'>File</span>::<span class='ident'>create</span>(<span class='kw-2'>&amp;</span><span class='ident'>p</span>).<span class='ident'>unwrap</span>();
+        <span class='ident'>index</span>.<span class='ident'>add_path</span>(<span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;file_a&quot;</span>)).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>id_a</span> <span class='op'>=</span> <span class='ident'>index</span>.<span class='ident'>write_tree</span>().<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>tree_a</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>find_tree</span>(<span class='ident'>id_a</span>).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>oid2</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>commit</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;refs/heads/branch_a&quot;</span>), <span class='kw-2'>&amp;</span><span class='ident'>sig</span>, <span class='kw-2'>&amp;</span><span class='ident'>sig</span>,
+                               <span class='string'>&quot;commit 2&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>tree_a</span>, <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>commit1</span>]).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>commit2</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>find_commit</span>(<span class='ident'>oid2</span>).<span class='ident'>unwrap</span>();
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;created oid2 {:?}&quot;</span>, <span class='ident'>oid2</span>);
+
+        <span class='comment'>// create commit oid3 on branchB</span>
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>index</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>index</span>().<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> <span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='ident'>repo</span>.<span class='ident'>workdir</span>().<span class='ident'>unwrap</span>()).<span class='ident'>join</span>(<span class='string'>&quot;file_b&quot;</span>);
+        <span class='ident'>fs</span>::<span class='ident'>File</span>::<span class='ident'>create</span>(<span class='kw-2'>&amp;</span><span class='ident'>p</span>).<span class='ident'>unwrap</span>();
+        <span class='ident'>index</span>.<span class='ident'>add_path</span>(<span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;file_b&quot;</span>)).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>id_b</span> <span class='op'>=</span> <span class='ident'>index</span>.<span class='ident'>write_tree</span>().<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>tree_b</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>find_tree</span>(<span class='ident'>id_b</span>).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>oid3</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>commit</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;refs/heads/branch_b&quot;</span>), <span class='kw-2'>&amp;</span><span class='ident'>sig</span>, <span class='kw-2'>&amp;</span><span class='ident'>sig</span>,
+                               <span class='string'>&quot;commit 3&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>tree_b</span>, <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>commit1</span>]).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>commit3</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>find_commit</span>(<span class='ident'>oid3</span>).<span class='ident'>unwrap</span>();
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;created oid3 {:?}&quot;</span>, <span class='ident'>oid3</span>);
+
+        <span class='comment'>// create merge commit oid4 on branchA with parents oid2 and oid3</span>
+        <span class='comment'>//let mut index4 = repo.merge_commits(&amp;commit2, &amp;commit3, None).unwrap();</span>
+        <span class='ident'>repo</span>.<span class='ident'>set_head</span>(<span class='string'>&quot;refs/heads/branch_a&quot;</span>).<span class='ident'>unwrap</span>();
+        <span class='ident'>repo</span>.<span class='ident'>checkout_head</span>(<span class='prelude-val'>None</span>).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>oid4</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>commit</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;refs/heads/branch_a&quot;</span>), <span class='kw-2'>&amp;</span><span class='ident'>sig</span>, <span class='kw-2'>&amp;</span><span class='ident'>sig</span>,
+                               <span class='string'>&quot;commit 4&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>tree_a</span>,
+                               <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>commit2</span>, <span class='kw-2'>&amp;</span><span class='ident'>commit3</span>]).<span class='ident'>unwrap</span>();
+        <span class='comment'>//index4.write_tree_to(&amp;repo).unwrap();</span>
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;created oid4 {:?}&quot;</span>, <span class='ident'>oid4</span>);
+
+        <span class='comment'>// create merge commit oid5 on branchB with parents oid2 and oid3</span>
+        <span class='comment'>//let mut index5 = repo.merge_commits(&amp;commit3, &amp;commit2, None).unwrap();</span>
+        <span class='ident'>repo</span>.<span class='ident'>set_head</span>(<span class='string'>&quot;refs/heads/branch_b&quot;</span>).<span class='ident'>unwrap</span>();
+        <span class='ident'>repo</span>.<span class='ident'>checkout_head</span>(<span class='prelude-val'>None</span>).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='ident'>oid5</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>commit</span>(<span class='prelude-val'>Some</span>(<span class='string'>&quot;refs/heads/branch_b&quot;</span>), <span class='kw-2'>&amp;</span><span class='ident'>sig</span>, <span class='kw-2'>&amp;</span><span class='ident'>sig</span>,
+                               <span class='string'>&quot;commit 5&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>tree_a</span>,
+                               <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>commit3</span>, <span class='kw-2'>&amp;</span><span class='ident'>commit2</span>]).<span class='ident'>unwrap</span>();
+        <span class='comment'>//index5.write_tree_to(&amp;repo).unwrap();</span>
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;created oid5 {:?}&quot;</span>, <span class='ident'>oid5</span>);
+
+        <span class='comment'>// merge bases of (oid4,oid5) should be (oid2,oid3)</span>
+        <span class='kw'>let</span> <span class='ident'>merge_bases</span> <span class='op'>=</span> <span class='ident'>repo</span>.<span class='ident'>merge_bases</span>(<span class='ident'>oid4</span>, <span class='ident'>oid5</span>).<span class='ident'>unwrap</span>();
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>found_oid2</span> <span class='op'>=</span> <span class='boolval'>false</span>;
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>found_oid3</span> <span class='op'>=</span> <span class='boolval'>false</span>;
+        <span class='kw'>for</span> <span class='ident'>mg</span> <span class='kw'>in</span> <span class='ident'>merge_bases</span>.<span class='ident'>iter</span>() {
+            <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;found merge base {:?}&quot;</span>, <span class='ident'>mg</span>);
+            <span class='kw'>if</span> <span class='ident'>mg</span> <span class='op'>==</span> <span class='kw-2'>&amp;</span><span class='ident'>oid2</span> {
+                <span class='ident'>found_oid2</span> <span class='op'>=</span> <span class='boolval'>true</span>;
+            } <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>mg</span> <span class='op'>==</span> <span class='kw-2'>&amp;</span><span class='ident'>oid3</span> {
+                <span class='ident'>found_oid3</span> <span class='op'>=</span> <span class='boolval'>true</span>;
+            } <span class='kw'>else</span> {
+                <span class='macro'>assert</span><span class='macro'>!</span>(<span class='boolval'>false</span>);
+            }
+        }
+        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>found_oid2</span>);
+        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>found_oid3</span>);
+	<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>merge_bases</span>.<span class='ident'>len</span>(), <span class='number'>2</span>);
     }
 
     <span class='attribute'>#[<span class='ident'>test</span>]</span>

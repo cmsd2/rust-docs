@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `git_push_add_refspec` fn in crate `libgit2_sys`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, git_push_add_refspec">
+    <meta name="description" content="API documentation for the Rust `git_merge_bases` fn in crate `libgit2_sys`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, git_merge_bases">
 
-    <title>libgit2_sys::git_push_add_refspec - Rust</title>
+    <title>libgit2_sys::git_merge_bases - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../main.css">
 
@@ -26,7 +26,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='index.html'>libgit2_sys</a></p><script>window.sidebarCurrent = {name: 'git_push_add_refspec', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>libgit2_sys</a></p><script>window.sidebarCurrent = {name: 'git_merge_bases', ty: 'fn', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -41,12 +41,12 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'><span class='in-band'><a href='index.html'>libgit2_sys</a>::<wbr><a class='fn' href=''>git_push_add_refspec</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'><a href='index.html'>libgit2_sys</a>::<wbr><a class='fn' href=''>git_merge_bases</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-8913' class='srclink' href='../src/libgit2_sys/lib.rs.html#1961-1962' title='goto source code'>[src]</a></span></h1>
-<pre class='rust fn'>pub unsafe extern fn git_push_add_refspec(push: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../libgit2_sys/enum.git_push.html' title='libgit2_sys::git_push'>git_push</a></a>, refspec: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='type' href='../libc/types/os/arch/c95/type.c_char.html' title='libc::types::os::arch::c95::c_char'>c_char</a></a>) -&gt; <a class='type' href='../libc/types/os/arch/c95/type.c_int.html' title='libc::types::os::arch::c95::c_int'>c_int</a></pre></section>
+        </span><a id='src-9735' class='srclink' href='../src/libgit2_sys/lib.rs.html#2144-2147' title='goto source code'>[src]</a></span></h1>
+<pre class='rust fn'>pub unsafe extern fn git_merge_bases(out: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../libgit2_sys/struct.git_oidarray.html' title='libgit2_sys::git_oidarray'>git_oidarray</a></a>, repo: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../libgit2_sys/enum.git_repository.html' title='libgit2_sys::git_repository'>git_repository</a></a>, one: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../libgit2_sys/struct.git_oid.html' title='libgit2_sys::git_oid'>git_oid</a></a>, two: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../libgit2_sys/struct.git_oid.html' title='libgit2_sys::git_oid'>git_oid</a></a>) -&gt; <a class='type' href='../libc/types/os/arch/c95/type.c_int.html' title='libc::types::os::arch::c95::c_int'>c_int</a></pre></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

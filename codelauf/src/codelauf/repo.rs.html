@@ -372,6 +372,8 @@
 <span id="330">330</span>
 <span id="331">331</span>
 <span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>rc</span>::<span class='ident'>Rc</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>path</span>::{<span class='ident'>PathBuf</span>,<span class='ident'>Path</span>};
@@ -663,9 +665,11 @@
             <span class='kw'>let</span> <span class='ident'>old_head</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>revparse_single</span>(<span class='self'>self</span>.<span class='ident'>commit</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>())).<span class='ident'>id</span>();
             <span class='kw'>let</span> <span class='ident'>current_head</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>head</span>()).<span class='ident'>target</span>().<span class='ident'>unwrap</span>();
             
-            <span class='kw'>let</span> <span class='ident'>base</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>merge_base</span>(<span class='ident'>old_head</span>, <span class='ident'>current_head</span>));
-            
-            <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>revwalk</span>.<span class='ident'>hide</span>(<span class='ident'>base</span>));
+            <span class='kw'>let</span> <span class='ident'>bases</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>git_repo</span>.<span class='ident'>merge_bases</span>(<span class='ident'>old_head</span>, <span class='ident'>current_head</span>));
+
+            <span class='kw'>for</span> <span class='ident'>base</span> <span class='kw'>in</span> <span class='ident'>bases</span>.<span class='ident'>iter</span>() {
+                <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>revwalk</span>.<span class='ident'>hide</span>(<span class='op'>*</span><span class='ident'>base</span>));
+            }
         }
 
         <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;commit history:&quot;</span>);

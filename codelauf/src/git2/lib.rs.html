@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-0a35038f75765ae4/git2-0.3.1/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/git/checkouts/git2-rs-8b74d411676c498c/ed0573ae4472b3d965b53398e158160442e21013/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -813,6 +813,9 @@
 <span id="771">771</span>
 <span id="772">772</span>
 <span id="773">773</span>
+<span id="774">774</span>
+<span id="775">775</span>
+<span id="776">776</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! # libgit2 bindings for Rust</span>
 <span class='doccomment'>//!</span>
@@ -1173,6 +1176,7 @@ Flags for the return value of `Repository::revparse`
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>build</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>cert</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>string_array</span>;
+<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>oid_array</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>transport</span>;
 
 <span class='kw'>mod</span> <span class='ident'>blame</span>;
@@ -1214,7 +1218,9 @@ Flags for the return value of `Repository::revparse`
                 <span class='string'>&quot;couldn&#39;t initialize the libgit2 library: {}&quot;</span>, <span class='ident'>r</span>);
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>libc</span>::<span class='ident'>atexit</span>(<span class='ident'>shutdown</span>), <span class='number'>0</span>);
     });
-    <span class='kw'>extern</span> <span class='kw'>fn</span> <span class='ident'>shutdown</span>() { <span class='kw'>unsafe</span> { <span class='ident'>raw</span>::<span class='ident'>git_libgit2_shutdown</span>() } }
+    <span class='kw'>extern</span> <span class='kw'>fn</span> <span class='ident'>shutdown</span>() {
+        <span class='kw'>unsafe</span> { <span class='ident'>raw</span>::<span class='ident'>git_libgit2_shutdown</span>(); }
+    }
 }
 
 <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>opt_bytes</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>T</span><span class='op'>&gt;</span>(<span class='ident'>_anchor</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>T</span>,

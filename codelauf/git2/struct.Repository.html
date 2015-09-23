@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-29580' class='srclink' href='../src/git2/repo.rs.html#27-29' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-29836' class='srclink' href='../src/git2/repo.rs.html#28-30' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Repository {
     // some fields omitted
 }</pre><div class='docblock'><p>An owned git repository, representing all state associated with the
@@ -477,6 +477,8 @@ defaulting to &quot;refs/notes/commits&quot;.</p>
 <div class='docblock'><p>Get the blame for a single file.</p>
 </div><h4 id='method.merge_base' class='method'><code>fn <a href='#method.merge_base' class='fnname'>merge_base</a>(&amp;self, one: <a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>, two: <a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
 <div class='docblock'><p>Find a merge base between two commits</p>
+</div><h4 id='method.merge_bases' class='method'><code>fn <a href='#method.merge_bases' class='fnname'>merge_bases</a>(&amp;self, one: <a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>, two: <a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/oid_array/struct.OidArray.html' title='git2::oid_array::OidArray'>OidArray</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Find all merge bases between two commits</p>
 </div><h4 id='method.graph_ahead_behind' class='method'><code>fn <a href='#method.graph_ahead_behind' class='fnname'>graph_ahead_behind</a>(&amp;self, local: <a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>, upstream: <a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, <a href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
 <div class='docblock'><p>Count the number of unique commits between two commit objects</p>
 
