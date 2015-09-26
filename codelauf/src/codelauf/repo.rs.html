@@ -500,7 +500,7 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>find_in_db</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>db</span>: <span class='kw-2'>&amp;</span><span class='ident'>db</span>::<span class='ident'>Db</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>db</span>::<span class='ident'>Repository</span><span class='op'>&gt;&gt;</span> {
-        <span class='ident'>db</span>.<span class='ident'>find_repo_by_remote</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>uri</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>branch</span>)
+        <span class='ident'>db</span>.<span class='ident'>find_repo_by_remote</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>uri</span>)
     }
     
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>find_or_create_in_db</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>db</span>: <span class='kw-2'>&amp;</span><span class='ident'>db</span>::<span class='ident'>Db</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span><span class='ident'>db</span>::<span class='ident'>Repository</span><span class='op'>&gt;</span> {
@@ -515,12 +515,16 @@
                 
                 <span class='kw'>let</span> <span class='ident'>remote_uri</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>uri</span>;
                 <span class='kw'>let</span> <span class='ident'>remote_branch</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>branch</span>;
-                <span class='kw'>let</span> <span class='ident'>repo_path</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>path</span>.<span class='ident'>to_str</span>().<span class='ident'>ok_or</span>(<span class='ident'>RepoError</span>::<span class='ident'>PathUnicodeError</span>));
                 
-                <span class='kw'>let</span> <span class='ident'>new_repo</span> <span class='op'>=</span> <span class='ident'>db</span>::<span class='ident'>Repository</span>::<span class='ident'>new_from_remote</span>(<span class='self'>self</span>.<span class='ident'>id</span>.<span class='ident'>clone</span>(), <span class='ident'>remote_uri</span>.<span class='ident'>clone</span>(), <span class='ident'>remote_branch</span>.<span class='ident'>clone</span>(), <span class='ident'>repo_path</span>.<span class='ident'>to_string</span>());
+                <span class='kw'>let</span> <span class='ident'>new_repo</span> <span class='op'>=</span> <span class='ident'>db</span>::<span class='ident'>Repository</span>::<span class='ident'>new_from_remote</span>(<span class='self'>self</span>.<span class='ident'>id</span>.<span class='ident'>clone</span>(), <span class='ident'>remote_uri</span>.<span class='ident'>clone</span>(), <span class='self'>self</span>.<span class='ident'>path</span>.<span class='ident'>clone</span>());
                 <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>db</span>.<span class='ident'>insert_repo</span>(<span class='kw-2'>&amp;</span><span class='ident'>new_repo</span>));
-                
+
                 <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;created db repo entry {:?}&quot;</span>, <span class='ident'>new_repo</span>);
+                
+                <span class='kw'>let</span> <span class='ident'>new_branch</span> <span class='op'>=</span> <span class='ident'>db</span>::<span class='ident'>RepoBranch</span>::<span class='ident'>new</span>(<span class='ident'>new_repo</span>.<span class='ident'>id</span>.<span class='ident'>clone</span>(), <span class='ident'>remote_branch</span>.<span class='ident'>clone</span>(), <span class='prelude-val'>None</span>);
+                <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>db</span>.<span class='ident'>insert_branch</span>(<span class='kw-2'>&amp;</span><span class='ident'>new_branch</span>));
+                
+                <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;created db repo branch entry {:?}&quot;</span>, <span class='ident'>new_branch</span>);
                 
                 <span class='prelude-val'>Ok</span>(<span class='ident'>new_repo</span>)
             }
@@ -532,10 +536,6 @@
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>db_repo</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>find_or_create_in_db</span>(<span class='ident'>db</span>));
 
-        <span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>commit</span>.<span class='ident'>is_none</span>() {
-            <span class='self'>self</span>.<span class='ident'>commit</span> <span class='op'>=</span> <span class='ident'>db_repo</span>.<span class='ident'>indexed_commit</span>.<span class='ident'>clone</span>();
-        }
-        
         <span class='kw'>match</span> <span class='ident'>db_repo</span>.<span class='ident'>sync_state</span> {
             <span class='ident'>SyncState</span>::<span class='ident'>NotCloned</span> <span class='op'>=&gt;</span> {
                 <span class='ident'>db_repo</span>.<span class='ident'>sync_state</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>sync_state</span>;

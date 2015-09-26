@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["DbError",""]],"struct":[["Db",""],["Repository",""]]});
+initSidebarItems({"enum":[["DbError",""]],"struct":[["Db",""]]});

@@ -392,8 +392,7 @@ exists.</p>
 <p>Returns <code>None</code> if it doesn&#39;t exist.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>, or a closure that
-determines the
-split.</p>
+determines if a character matches.</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
 <p>Simple patterns:</p>
@@ -426,7 +425,7 @@ exists.</p>
 <p>Returns <code>None</code> if it doesn&#39;t exist.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>,
-or a closure that determines the split.</p>
+or a closure that determines if a character matches.</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
 <p>Simple patterns:</p>
@@ -681,7 +680,7 @@ efficient to support.</p>
 <div class='docblock'><p>An iterator over the matches of a pattern within <code>self</code>.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>, or a closure that
-determines the split.
+determines if a character matches.
 Additional libraries might provide more complex patterns like
 regular expressions.</p>
 
@@ -706,7 +705,7 @@ from a forward search, <code>rmatches()</code> can be used.</p>
 reverse order.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>, or a closure that
-determines the split.
+determines if a character matches.
 Additional libraries might provide more complex patterns like
 regular expressions.</p>
 
@@ -734,8 +733,7 @@ corresponding to the first
 match are returned.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>, or a closure that
-determines
-the split.
+determines if a character matches.
 Additional libraries might provide more complex patterns like
 regular expressions.</p>
 
@@ -771,8 +769,7 @@ corresponding to the last
 match are returned.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>, or a closure that
-determines
-the split.
+determines if a character matches.
 Additional libraries might provide more complex patterns like
 regular expressions.</p>
 
@@ -818,7 +815,7 @@ the same elements.</p>
 repeatedly removed.</p>
 
 <p>The pattern can be a simple <code>char</code>, or a closure that determines
-the split.</p>
+if a character matches.</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
 <p>Simple patterns:</p>
@@ -837,7 +834,7 @@ the split.</p>
 repeatedly removed.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>, or a closure that
-determines the split.</p>
+determines if a character matches.</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1><pre class='rust rust-example-rendered'>
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='string'>&quot;11foo1bar11&quot;</span>.<span class='ident'>trim_left_matches</span>(<span class='string'>&#39;1&#39;</span>), <span class='string'>&quot;foo1bar11&quot;</span>);
@@ -850,7 +847,7 @@ determines the split.</p>
 repeatedly removed.</p>
 
 <p>The pattern can be a simple <code>&amp;str</code>, <code>char</code>, or a closure that
-determines the split.</p>
+determines if a character matches.</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
 <p>Simple patterns:</p>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-0a35038f75765ae4/clap-1.4.0/src/args/argmatches.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-0a35038f75765ae4/clap-1.4.2/src/args/argmatches.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>argmatches.rs.html -- source</title>
@@ -341,7 +341,7 @@
 <span class='doccomment'>/// the user. To get a new instance of this struct you use `.get_matches()` of the `App` struct.</span>
 <span class='doccomment'>///</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// # Example</span>
+<span class='doccomment'>/// # Examples</span>
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// ```no_run</span>
 <span class='doccomment'>/// # use clap::{App, Arg};</span>
@@ -399,7 +399,7 @@
     <span class='doccomment'>/// Creates a new instance of `ArgMatches`. This ins&#39;t called directly, but</span>
     <span class='doccomment'>/// through the `.get_matches()` method of `App`</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg};</span>
@@ -421,7 +421,7 @@
     <span class='doccomment'>/// *NOTE:* If getting a value for an option or positional argument that allows multiples,</span>
     <span class='doccomment'>/// prefer `values_of()` as `value_of()` will only return the _*first*_ value.</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg};</span>
@@ -450,7 +450,7 @@
     <span class='doccomment'>/// that takes multiple values at runtime). If the option wasn&#39;t present at runtime it</span>
     <span class='doccomment'>/// returns `None`</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg};</span>
@@ -479,7 +479,7 @@
     <span class='doccomment'>/// Returns if an argument was present at runtime.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg};</span>
@@ -508,7 +508,7 @@
     <span class='doccomment'>/// allow multiple occurrences, but will obviously only return `0` or `1`.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg};</span>
@@ -533,7 +533,7 @@
     <span class='doccomment'>/// present at runtime.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg, SubCommand};</span>
@@ -561,7 +561,7 @@
     <span class='doccomment'>/// the name of sub-subcommand&#39;s names</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg, SubCommand};</span>
@@ -584,7 +584,7 @@
     <span class='doccomment'>/// wasn&#39;t found.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg, SubCommand};</span>
@@ -606,7 +606,7 @@
     <span class='doccomment'>/// Returns a string slice of the usage statement for the `App` (or `SubCommand`)</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>///</span>
-    <span class='doccomment'>/// # Example</span>
+    <span class='doccomment'>/// # Examples</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// ```no_run</span>
     <span class='doccomment'>/// # use clap::{App, Arg, SubCommand};</span>
