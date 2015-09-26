@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["SyncState",""]],"struct":[["Repo",""]]});
+initSidebarItems({"enum":[["SyncState",""]],"struct":[["Branch",""],["Repo",""]]});
