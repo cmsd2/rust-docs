@@ -81,6 +81,8 @@
 <span id="39">39</span>
 <span id="40">40</span>
 <span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>result</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>rusqlite</span>::<span class='ident'>SqliteError</span>;
@@ -102,6 +104,7 @@
     <span class='ident'>StringUnicodeError</span>,
     <span class='ident'>GitError</span>(<span class='ident'>git2</span>::<span class='ident'>Error</span>),
     <span class='ident'>InvalidState</span>(<span class='ident'>String</span>),
+    <span class='ident'>FromUtf8Error</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>SqliteError</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
@@ -121,6 +124,7 @@
         <span class='ident'>RepoError</span>::<span class='ident'>GitError</span>(<span class='ident'>err</span>)
     }
 }
+
 
     
 </pre>
