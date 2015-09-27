@@ -214,7 +214,7 @@
 
     <span class='kw'>let</span> <span class='ident'>index</span> <span class='op'>=</span> <span class='ident'>Index</span>::<span class='ident'>new_for_config</span>(<span class='ident'>config</span>);
 
-    <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>index</span>.<span class='ident'>index_repo</span>(<span class='ident'>repo</span>));
+    <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>index</span>.<span class='ident'>index_repo</span>(<span class='ident'>db</span>, <span class='ident'>repo</span>));
 
     <span class='prelude-val'>Ok</span>(())
 }
