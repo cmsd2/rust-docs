@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Index",""]]});
+initSidebarItems({"struct":[["Commit",""],["CommitId",""],["Index",""],["Signature",""]]});

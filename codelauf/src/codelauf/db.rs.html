@@ -215,6 +215,16 @@
 <span id="173">173</span>
 <span id="174">174</span>
 <span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>path</span>::<span class='ident'>Path</span>;
 <span class='kw'>use</span> <span class='ident'>rusqlite</span>::{<span class='ident'>SqliteConnection</span>,<span class='ident'>SqliteResult</span>};
@@ -372,6 +382,16 @@
         }
         
         <span class='prelude-val'>Ok</span>(<span class='ident'>result</span>)
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mark_commit_as_indexed</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>commit_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;UPDATE commits SET \
+                                               state = &#39;Indexed&#39; \
+                                               WHERE id=? AND repo_id=?&quot;</span>).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>SqlError</span>(<span class='ident'>e</span>)));
+        
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>commit_id</span>, <span class='kw-2'>&amp;</span><span class='ident'>repo_id</span>]));
+        
+        <span class='prelude-val'>Ok</span>(())
     }
 }
 

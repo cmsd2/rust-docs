@@ -83,12 +83,39 @@
 <span id="41">41</span>
 <span id="42">42</span>
 <span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
 </pre><pre class='rust '>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>num</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>result</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>rusqlite</span>::<span class='ident'>SqliteError</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>convert</span>::<span class='ident'>From</span>;
 <span class='kw'>use</span> <span class='ident'>db</span>;
 <span class='kw'>use</span> <span class='ident'>git2</span>;
+<span class='kw'>use</span> <span class='ident'>url</span>;
+<span class='kw'>use</span> <span class='ident'>rs_es</span>;
 
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>T</span>, <span class='ident'>RepoError</span><span class='op'>&gt;</span>;
 
@@ -99,12 +126,16 @@
     <span class='ident'>DbError</span>(<span class='ident'>db</span>::<span class='ident'>DbError</span>),
     <span class='ident'>SqlError</span>(<span class='ident'>SqliteError</span>),
     <span class='ident'>NoRemote</span>,
+    <span class='ident'>NoElasticSearch</span>,
     <span class='ident'>NotCloned</span>,
     <span class='ident'>PathUnicodeError</span>,
     <span class='ident'>StringUnicodeError</span>,
     <span class='ident'>GitError</span>(<span class='ident'>git2</span>::<span class='ident'>Error</span>),
     <span class='ident'>InvalidState</span>(<span class='ident'>String</span>),
     <span class='ident'>FromUtf8Error</span>,
+    <span class='ident'>UrlParseError</span>(<span class='ident'>url</span>::<span class='ident'>ParseError</span>),
+    <span class='ident'>ElasticSearchError</span>(<span class='ident'>rs_es</span>::<span class='ident'>error</span>::<span class='ident'>EsError</span>),
+    <span class='ident'>ParseIntError</span>(<span class='ident'>num</span>::<span class='ident'>ParseIntError</span>),
 }
 
 <span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>SqliteError</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
@@ -125,6 +156,23 @@
     }
 }
 
+<span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>url</span>::<span class='ident'>ParseError</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>err</span>: <span class='ident'>url</span>::<span class='ident'>ParseError</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoError</span> {
+        <span class='ident'>RepoError</span>::<span class='ident'>UrlParseError</span>(<span class='ident'>err</span>)
+    }
+}
+
+<span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>rs_es</span>::<span class='ident'>error</span>::<span class='ident'>EsError</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>err</span>: <span class='ident'>rs_es</span>::<span class='ident'>error</span>::<span class='ident'>EsError</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoError</span> {
+        <span class='ident'>RepoError</span>::<span class='ident'>ElasticSearchError</span>(<span class='ident'>err</span>)
+    }
+}
+
+<span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>num</span>::<span class='ident'>ParseIntError</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>err</span>: <span class='ident'>num</span>::<span class='ident'>ParseIntError</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoError</span> {
+        <span class='ident'>RepoError</span>::<span class='ident'>ParseIntError</span>(<span class='ident'>err</span>)
+    }
+}
 
     
 </pre>
