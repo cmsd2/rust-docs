@@ -225,6 +225,59 @@
 <span id="183">183</span>
 <span id="184">184</span>
 <span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>path</span>::<span class='ident'>Path</span>;
 <span class='kw'>use</span> <span class='ident'>rusqlite</span>::{<span class='ident'>SqliteConnection</span>,<span class='ident'>SqliteResult</span>};
@@ -297,7 +350,7 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>update_repo</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo</span>: <span class='kw-2'>&amp;</span><span class='ident'>Repository</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>path_buf_to_bytes_vec</span>(<span class='kw-2'>&amp;</span><span class='ident'>repo</span>.<span class='ident'>path</span>));
+        <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>path_to_bytes_vec</span>(<span class='kw-2'>&amp;</span><span class='ident'>repo</span>.<span class='ident'>path</span>));
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;UPDATE repositories SET \
                                                path=?, sync_state=?, \
@@ -314,7 +367,7 @@
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>insert_repo</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo</span>: <span class='kw-2'>&amp;</span><span class='ident'>Repository</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>path_buf_to_bytes_vec</span>(<span class='kw-2'>&amp;</span><span class='ident'>repo</span>.<span class='ident'>path</span>));
+        <span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>path_to_bytes_vec</span>(<span class='kw-2'>&amp;</span><span class='ident'>repo</span>.<span class='ident'>path</span>));
         
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;INSERT INTO repositories VALUES (?,?,?,?,?,?,?)&quot;</span>).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>SqlError</span>(<span class='ident'>e</span>)));
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[
@@ -337,11 +390,11 @@
         <span class='ident'>RepoBranch</span>::<span class='ident'>new_from_sql_row</span>(<span class='kw-2'>&amp;</span><span class='ident'>row0</span>).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>r</span><span class='op'>|</span> <span class='prelude-val'>Some</span>(<span class='ident'>r</span>))
     }
 
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>update_branch</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>branch</span>: <span class='kw-2'>&amp;</span><span class='ident'>RepoBranch</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mark_branch_as_indexed</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>branch</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>commit_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;UPDATE branches SET \
                                                indexed_commit_id=? \
-                                               WHERE id=?&quot;</span>).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>SqlError</span>(<span class='ident'>e</span>)));
-        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>branch</span>.<span class='ident'>indexed_commit_id</span>]));
+                                               WHERE repo_id=? AND name=?&quot;</span>).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>SqlError</span>(<span class='ident'>e</span>)));
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>repo_id</span>, <span class='kw-2'>&amp;</span><span class='ident'>branch</span>, <span class='kw-2'>&amp;</span><span class='ident'>commit_id</span>]));
         
         <span class='prelude-val'>Ok</span>(())
     }
@@ -391,6 +444,59 @@
         
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>commit_id</span>, <span class='kw-2'>&amp;</span><span class='ident'>repo_id</span>]));
         
+        <span class='prelude-val'>Ok</span>(())
+    }
+
+    <span class='doccomment'>/// create row in files table, or update changed_commit_id if it exists.</span>
+    <span class='doccomment'>/// indexed_commit_id will be set to null.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>upsert_file</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>branch</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>path</span>: <span class='kw-2'>&amp;</span><span class='ident'>Path</span>, <span class='ident'>changed_commit_id</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;INSERT OR REPLACE INTO files \
+                                               (repo_id, branch, path, changed_commit_id) \
+                                               VALUES (?,?,?,?)&quot;</span>));
+
+        <span class='kw'>let</span> <span class='ident'>path_bytes</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>path_to_bytes</span>(<span class='ident'>path</span>));
+        
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>repo_id</span>, <span class='kw-2'>&amp;</span><span class='ident'>branch</span>, <span class='kw-2'>&amp;</span><span class='ident'>path_bytes</span>, <span class='kw-2'>&amp;</span><span class='ident'>changed_commit_id</span>]));
+
+        <span class='prelude-val'>Ok</span>(())
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>find_files_not_indexed</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>RepoFile</span><span class='op'>&gt;&gt;</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;SELECT * FROM files WHERE ((indexed_commit_id is null) or (indexed_commit_id != changed_commit_id)) AND repo_id = ?&quot;</span>).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>SqlError</span>(<span class='ident'>e</span>)));
+        
+        <span class='kw'>let</span> <span class='ident'>rows</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>query</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>repo_id</span>]));
+
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[];
+
+        <span class='kw'>for</span> <span class='ident'>row_result</span> <span class='kw'>in</span> <span class='ident'>rows</span> {
+            <span class='kw'>let</span> <span class='ident'>row</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>row_result</span>);
+
+            <span class='kw'>let</span> <span class='ident'>file</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>RepoFile</span>::<span class='ident'>new_from_sql_row</span>(<span class='kw-2'>&amp;</span><span class='ident'>row</span>));
+            
+            <span class='ident'>result</span>.<span class='ident'>push</span>(<span class='ident'>file</span>);
+        }
+        
+        <span class='prelude-val'>Ok</span>(<span class='ident'>result</span>)
+    }
+
+    <span class='doccomment'>/// find file by repo_id and path, and set the indexed_commit_id column</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>mark_file_as_indexed</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>path</span>: <span class='kw-2'>&amp;</span><span class='ident'>Path</span>, <span class='ident'>indexed_commit_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;UPDATE files SET \
+                                               indexed_commit_id = ? \
+                                               WHERE path=? AND repo_id=?&quot;</span>).<span class='ident'>map_err</span>(<span class='op'>|</span><span class='ident'>e</span><span class='op'>|</span> <span class='ident'>RepoError</span>::<span class='ident'>SqlError</span>(<span class='ident'>e</span>)));
+
+        <span class='kw'>let</span> <span class='ident'>path_bytes</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>path_to_bytes</span>(<span class='ident'>path</span>));
+        
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>indexed_commit_id</span>, <span class='kw-2'>&amp;</span><span class='ident'>path_bytes</span>, <span class='kw-2'>&amp;</span><span class='ident'>repo_id</span>]));
+        
+        <span class='prelude-val'>Ok</span>(())        
+    }
+
+    <span class='doccomment'>/// in a single transaction, delete all rows in the commits and files work tables, for the given repo</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>clear_commits</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>repo_id</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>del_commits_stmt</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;DELETE FROM commits WHERE repo_id = ?&quot;</span>));
+        <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>del_commits_stmt</span>.<span class='ident'>execute</span>(<span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>repo_id</span>]));
+
         <span class='prelude-val'>Ok</span>(())
     }
 }

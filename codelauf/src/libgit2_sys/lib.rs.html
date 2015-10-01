@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/git/checkouts/git2-rs-ee692bf932596274/tree_iter_lifetime/libgit2-sys/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/git/checkouts/git2-rs-8b74d411676c498c/master/libgit2-sys/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -2374,6 +2374,45 @@
 <span id="2332">2332</span>
 <span id="2333">2333</span>
 <span id="2334">2334</span>
+<span id="2335">2335</span>
+<span id="2336">2336</span>
+<span id="2337">2337</span>
+<span id="2338">2338</span>
+<span id="2339">2339</span>
+<span id="2340">2340</span>
+<span id="2341">2341</span>
+<span id="2342">2342</span>
+<span id="2343">2343</span>
+<span id="2344">2344</span>
+<span id="2345">2345</span>
+<span id="2346">2346</span>
+<span id="2347">2347</span>
+<span id="2348">2348</span>
+<span id="2349">2349</span>
+<span id="2350">2350</span>
+<span id="2351">2351</span>
+<span id="2352">2352</span>
+<span id="2353">2353</span>
+<span id="2354">2354</span>
+<span id="2355">2355</span>
+<span id="2356">2356</span>
+<span id="2357">2357</span>
+<span id="2358">2358</span>
+<span id="2359">2359</span>
+<span id="2360">2360</span>
+<span id="2361">2361</span>
+<span id="2362">2362</span>
+<span id="2363">2363</span>
+<span id="2364">2364</span>
+<span id="2365">2365</span>
+<span id="2366">2366</span>
+<span id="2367">2367</span>
+<span id="2368">2368</span>
+<span id="2369">2369</span>
+<span id="2370">2370</span>
+<span id="2371">2371</span>
+<span id="2372">2372</span>
+<span id="2373">2373</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span> <span class='op'>=</span> <span class='string'>&quot;http://alexcrichton.com/git2-rs&quot;</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_camel_case_types</span>)]</span>
@@ -2425,6 +2464,7 @@
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>git_diff_stats</span> {}
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>git_reflog</span> {}
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>git_reflog_entry</span> {}
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>git_describe_result</span> {}
 
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>git_revspec</span> {
@@ -3558,6 +3598,32 @@
     <span class='kw'>pub</span> <span class='ident'>callback</span>: <span class='ident'>git_smart_subtransport_cb</span>,
     <span class='kw'>pub</span> <span class='ident'>rpc</span>: <span class='ident'>c_uint</span>,
     <span class='kw'>pub</span> <span class='ident'>param</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>c_void</span>,
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>git_describe_options</span> {
+    <span class='kw'>pub</span> <span class='ident'>version</span>: <span class='ident'>c_uint</span>,
+    <span class='kw'>pub</span> <span class='ident'>max_candidates_tags</span>: <span class='ident'>c_uint</span>,
+    <span class='kw'>pub</span> <span class='ident'>describe_strategy</span>: <span class='ident'>c_uint</span>,
+    <span class='kw'>pub</span> <span class='ident'>pattern</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_char</span>,
+    <span class='kw'>pub</span> <span class='ident'>only_follow_first_parent</span>: <span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>show_commit_oid_as_fallback</span>: <span class='ident'>c_int</span>,
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>git_describe_strategy_t</span> {
+    <span class='ident'>GIT_DESCRIBE_DEFAULT</span>,
+    <span class='ident'>GIT_DESCRIBE_TAGS</span>,
+    <span class='ident'>GIT_DESCRIBE_ALL</span>,
+}
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>git_describe_strategy_t</span>::<span class='op'>*</span>;
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>git_describe_format_options</span> {
+    <span class='kw'>pub</span> <span class='ident'>version</span>: <span class='ident'>c_uint</span>,
+    <span class='kw'>pub</span> <span class='ident'>abbreviated_size</span>: <span class='ident'>c_uint</span>,
+    <span class='kw'>pub</span> <span class='ident'>always_use_long_format</span>: <span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>dirty_suffix</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>c_char</span>,
 }
 
 <span class='doccomment'>/// Initialize openssl for the libgit2 library</span>
@@ -4699,6 +4765,18 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>git_transport_smart</span>(<span class='ident'>out</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_transport</span>,
                                <span class='ident'>owner</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_remote</span>,
                                <span class='ident'>payload</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>c_void</span>) <span class='op'>-&gt;</span> <span class='ident'>c_int</span>;
+
+    <span class='comment'>// describe</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>git_describe_commit</span>(<span class='ident'>result</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_describe_result</span>,
+                               <span class='ident'>object</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_object</span>,
+                               <span class='ident'>opts</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_describe_options</span>) <span class='op'>-&gt;</span> <span class='ident'>c_int</span>;
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>git_describe_format</span>(<span class='ident'>buf</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_buf</span>,
+                               <span class='ident'>result</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>git_describe_result</span>,
+                               <span class='ident'>opts</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>git_describe_format_options</span>) <span class='op'>-&gt;</span> <span class='ident'>c_int</span>;
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>git_describe_result_free</span>(<span class='ident'>result</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_describe_result</span>);
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>git_describe_workdir</span>(<span class='ident'>out</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_describe_result</span>,
+                                <span class='ident'>repo</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_repository</span>,
+                                <span class='ident'>opts</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>git_describe_options</span>) <span class='op'>-&gt;</span> <span class='ident'>c_int</span>;
 }
 
 <span class='attribute'>#[<span class='ident'>test</span>]</span>

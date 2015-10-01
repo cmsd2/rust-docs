@@ -107,8 +107,20 @@
 <span id="65">65</span>
 <span id="66">66</span>
 <span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>num</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>result</span>::<span class='prelude-ty'>Result</span>;
 <span class='kw'>use</span> <span class='ident'>rusqlite</span>::<span class='ident'>SqliteError</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>convert</span>::<span class='ident'>From</span>;
@@ -136,6 +148,10 @@
     <span class='ident'>UrlParseError</span>(<span class='ident'>url</span>::<span class='ident'>ParseError</span>),
     <span class='ident'>ElasticSearchError</span>(<span class='ident'>rs_es</span>::<span class='ident'>error</span>::<span class='ident'>EsError</span>),
     <span class='ident'>ParseIntError</span>(<span class='ident'>num</span>::<span class='ident'>ParseIntError</span>),
+    <span class='ident'>NoTreeEntryName</span>,
+    <span class='ident'>HeadRefHasNoDirectTarget</span>,
+    <span class='ident'>IoError</span>(<span class='ident'>io</span>::<span class='ident'>Error</span>),
+    <span class='ident'>BranchNotFound</span>,
 }
 
 <span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>SqliteError</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
@@ -171,6 +187,12 @@
 <span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>num</span>::<span class='ident'>ParseIntError</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
     <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>err</span>: <span class='ident'>num</span>::<span class='ident'>ParseIntError</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoError</span> {
         <span class='ident'>RepoError</span>::<span class='ident'>ParseIntError</span>(<span class='ident'>err</span>)
+    }
+}
+
+<span class='kw'>impl</span> <span class='ident'>From</span><span class='op'>&lt;</span><span class='ident'>io</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>RepoError</span> {
+    <span class='kw'>fn</span> <span class='ident'>from</span>(<span class='ident'>err</span>: <span class='ident'>io</span>::<span class='ident'>Error</span>) <span class='op'>-&gt;</span> <span class='ident'>RepoError</span> {
+        <span class='ident'>RepoError</span>::<span class='ident'>IoError</span>(<span class='ident'>err</span>)
     }
 }
 

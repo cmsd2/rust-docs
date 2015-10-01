@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-29836' class='srclink' href='../src/git2/repo.rs.html#28-30' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-30442' class='srclink' href='../src/git2/repo.rs.html#29-31' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Repository {
     // some fields omitted
 }</pre><div class='docblock'><p>An owned git repository, representing all state associated with the
@@ -499,6 +499,12 @@ object will be returned.</p>
 <div class='docblock'><p>Rename a reflog</p>
 
 <p>The reflog to be renamed is expected to already exist.</p>
+</div><h4 id='method.describe' class='method'><code>fn <a href='#method.describe' class='fnname'>describe</a>(&amp;self, opts: &amp;<a class='struct' href='../git2/struct.DescribeOptions.html' title='git2::DescribeOptions'>DescribeOptions</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Describe.html' title='git2::Describe'>Describe</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Describes a commit</p>
+
+<p>Performs a describe operation on the current commit and the worktree.
+After performing a describe on HEAD, a status is run and description is
+considered to be dirty if there are.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> for <a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>

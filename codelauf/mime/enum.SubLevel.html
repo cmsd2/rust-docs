@@ -292,8 +292,6 @@ that must be on a <code>char</code> boundary.</p>
 or if it is not on a <code>char</code> boundary.</p>
 
 <h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1><pre class='rust rust-example-rendered'>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>str_split_at</span>)]</span>
-
 <span class='kw'>let</span> <span class='ident'>s</span> <span class='op'>=</span> <span class='string'>&quot;Löwe 老虎 Léopard&quot;</span>;
 <span class='kw'>let</span> <span class='ident'>first_space</span> <span class='op'>=</span> <span class='ident'>s</span>.<span class='ident'>find</span>(<span class='string'>&#39; &#39;</span>).<span class='ident'>unwrap_or</span>(<span class='ident'>s</span>.<span class='ident'>len</span>());
 <span class='kw'>let</span> (<span class='ident'>a</span>, <span class='ident'>b</span>) <span class='op'>=</span> <span class='ident'>s</span>.<span class='ident'>split_at</span>(<span class='ident'>first_space</span>);

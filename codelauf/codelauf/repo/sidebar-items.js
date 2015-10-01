@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["SyncState",""]],"struct":[["Branch",""],["RecursiveTreeIter",""],["Repo",""]]});
+initSidebarItems({"enum":[["SyncState",""]],"struct":[["Branch",""],["RecursiveTreeIter",""],["Repo",""],["RepoTreeEntry",""]]});

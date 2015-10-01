@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/git/checkouts/git2-rs-ee692bf932596274/tree_iter_lifetime/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/git/checkouts/git2-rs-8b74d411676c498c/master/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -816,6 +816,8 @@
 <span id="774">774</span>
 <span id="775">775</span>
 <span id="776">776</span>
+<span id="777">777</span>
+<span id="778">778</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! # libgit2 bindings for Rust</span>
 <span class='doccomment'>//!</span>
@@ -906,6 +908,7 @@
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>commit</span>::{<span class='ident'>Commit</span>, <span class='ident'>Parents</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>config</span>::{<span class='ident'>Config</span>, <span class='ident'>ConfigEntry</span>, <span class='ident'>ConfigEntries</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>cred</span>::{<span class='ident'>Cred</span>, <span class='ident'>CredentialHelper</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>describe</span>::{<span class='ident'>Describe</span>, <span class='ident'>DescribeFormatOptions</span>, <span class='ident'>DescribeOptions</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>diff</span>::{<span class='ident'>Diff</span>, <span class='ident'>DiffDelta</span>, <span class='ident'>DiffFile</span>, <span class='ident'>DiffOptions</span>, <span class='ident'>Deltas</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>diff</span>::{<span class='ident'>DiffLine</span>, <span class='ident'>DiffHunk</span>, <span class='ident'>DiffStats</span>, <span class='ident'>DiffFindOptions</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>merge</span>::{<span class='ident'>AnnotatedCommit</span>, <span class='ident'>MergeOptions</span>};
@@ -1186,6 +1189,7 @@ Flags for the return value of `Repository::revparse`
 <span class='kw'>mod</span> <span class='ident'>commit</span>;
 <span class='kw'>mod</span> <span class='ident'>config</span>;
 <span class='kw'>mod</span> <span class='ident'>cred</span>;
+<span class='kw'>mod</span> <span class='ident'>describe</span>;
 <span class='kw'>mod</span> <span class='ident'>diff</span>;
 <span class='kw'>mod</span> <span class='ident'>merge</span>;
 <span class='kw'>mod</span> <span class='ident'>error</span>;
