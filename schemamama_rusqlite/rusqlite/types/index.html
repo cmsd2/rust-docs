@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-37' class='srclink' href='../../src/rusqlite/types.rs.html#1-394' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-23' class='srclink' href='../../src/rusqlite/types.rs.html#1-441' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Traits dealing with SQLite data types.</p>
 
 <p>SQLite uses a <a href="https://www.sqlite.org/datatype3.html">dynamic type system</a>. Implementations of
@@ -75,7 +75,7 @@ empty string, or an empty vector of bytes.</p>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>libc</span>;
 
 <span class='kw'>use</span> <span class='ident'>rusqlite</span>::<span class='ident'>types</span>::{<span class='ident'>FromSql</span>, <span class='ident'>ToSql</span>, <span class='ident'>sqlite3_stmt</span>};
-<span class='kw'>use</span> <span class='ident'>rusqlite</span>::{<span class='ident'>SqliteResult</span>};
+<span class='kw'>use</span> <span class='ident'>rusqlite</span>::{<span class='prelude-ty'>Result</span>};
 <span class='kw'>use</span> <span class='ident'>libc</span>::<span class='ident'>c_int</span>;
 <span class='kw'>use</span> <span class='ident'>time</span>;
 
@@ -83,7 +83,7 @@ empty string, or an empty vector of bytes.</p>
 
 <span class='kw'>impl</span> <span class='ident'>FromSql</span> <span class='kw'>for</span> <span class='ident'>TimespecSql</span> {
     <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>column_result</span>(<span class='ident'>stmt</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, <span class='ident'>col</span>: <span class='ident'>c_int</span>)
-            <span class='op'>-&gt;</span> <span class='ident'>SqliteResult</span><span class='op'>&lt;</span><span class='ident'>TimespecSql</span><span class='op'>&gt;</span> {
+            <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>TimespecSql</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>as_f64_result</span> <span class='op'>=</span> <span class='ident'>FromSql</span>::<span class='ident'>column_result</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>);
         <span class='ident'>as_f64_result</span>.<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>as_f64</span>: <span class='ident'>f64</span><span class='op'>|</span> {
             <span class='ident'>TimespecSql</span>(<span class='ident'>time</span>::<span class='ident'>Timespec</span>{ <span class='ident'>sec</span>: <span class='ident'>as_f64</span>.<span class='ident'>trunc</span>() <span class='kw'>as</span> <span class='ident'>i64</span>,
