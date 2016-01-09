@@ -9,6 +9,7 @@
 
     <title>rusqlite::Row - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
 
     
@@ -45,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-838' class='srclink' href='../src/rusqlite/lib.rs.html#1048-1052' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-850' class='srclink' href='../src/rusqlite/lib.rs.html#1048-1052' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Row&lt;'stmt&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A single result row of a query.</p>
@@ -77,7 +78,7 @@ is stale.</p>
 </div><h4 id='method.get_checked' class='method'><code>fn <a href='#method.get_checked' class='fnname'>get_checked</a>&lt;T: <a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;T&gt;</code></h4>
 <div class='docblock'><p>Get the value of a particular column of the result row.</p>
 
-<h2 id='failure' class='section-header'><a href='#failure'>Failure</a></h2>
+<h2 id='failure-1' class='section-header'><a href='#failure-1'>Failure</a></h2>
 <p>Returns a <code>SQLITE_MISMATCH</code>-coded <code>Error</code> if the underlying SQLite column
 type is not a valid type as a source for <code>T</code>.</p>
 
@@ -142,6 +143,6 @@ for this row or if this row is stale.</p>
     <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     
-    <script async src="../search-index.js"></script>
+    <script defer src="../search-index.js"></script>
 </body>
 </html>

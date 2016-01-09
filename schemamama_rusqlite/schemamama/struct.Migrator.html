@@ -9,6 +9,7 @@
 
     <title>schemamama::Migrator - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
 
     
@@ -56,7 +57,7 @@
 </div><h4 id='method.register' class='method'><code>fn <a href='#method.register' class='fnname'>register</a>(&amp;mut self, migration: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;T::MigrationType&gt;)</code></h4>
 <div class='docblock'><p>Register a migration. If a migration with the same version is already registered, a warning
 is logged and the registration fails.</p>
-</div><h4 id='method.version_registered' class='method'><code>fn <a href='#method.version_registered' class='fnname'>version_registered</a>(&amp;self, version: <a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>) -&gt; <a href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div><h4 id='method.version_registered' class='method'><code>fn <a href='#method.version_registered' class='fnname'>version_registered</a>(&amp;self, version: <a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Returns true is a migration with the provided version has been registered.</p>
 </div><h4 id='method.first_version' class='method'><code>fn <a href='#method.first_version' class='fnname'>first_version</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;</code></h4>
 <div class='docblock'><p>Returns the lowest version of the registered migrations, or <code>None</code> if no migrations have
@@ -72,18 +73,18 @@ been registered.</p>
 </div><h4 id='method.migrated_versions' class='method'><code>fn <a href='#method.migrated_versions' class='fnname'>migrated_versions</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/btree/set/struct.BTreeSet.html' title='collections::btree::set::BTreeSet'>BTreeSet</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;</code></h4>
 <div class='docblock'><p>Returns a set of the versions of all of the currently applied migrations.</p>
 
-<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
+<h2 id='panics-1' class='section-header'><a href='#panics-1'>Panics</a></h2>
 <p>Panics if there is an underlying problem retrieving the current versions from the adapter.</p>
 </div><h4 id='method.down' class='method'><code>fn <a href='#method.down' class='fnname'>down</a>(&amp;self, to: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;)</code></h4>
 <div class='docblock'><p>Rollback to the specified version (exclusive), or rollback to the state before any
 registered migrations were applied if <code>None</code> is specified.</p>
 
-<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
+<h2 id='panics-2' class='section-header'><a href='#panics-2'>Panics</a></h2>
 <p>Panics if there is an underlying problem reverting any of the matched migrations.</p>
 </div><h4 id='method.up' class='method'><code>fn <a href='#method.up' class='fnname'>up</a>(&amp;self, to: <a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>)</code></h4>
 <div class='docblock'><p>Migrate to the specified version (inclusive).</p>
 
-<h2 id='panics' class='section-header'><a href='#panics'>Panics</a></h2>
+<h2 id='panics-3' class='section-header'><a href='#panics-3'>Panics</a></h2>
 <p>Panics if there is an underlying problem applying any of the matched migrations.</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
@@ -144,6 +145,6 @@ registered migrations were applied if <code>None</code> is specified.</p>
     <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     
-    <script async src="../search-index.js"></script>
+    <script defer src="../search-index.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@
 
     <title>libsqlite3_sys::Struct_sqlite3_index_info - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
 
     
@@ -48,12 +49,12 @@
         </span><a id='src-307' class='srclink' href='../src/libsqlite3_sys/bindgen.rs.html#473-485' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Struct_sqlite3_index_info {
     pub nConstraint: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
-    pub aConstraint: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_index_constraint.html' title='libsqlite3_sys::Struct_sqlite3_index_constraint'>Struct_sqlite3_index_constraint</a></a>,
+    pub aConstraint: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_index_constraint.html' title='libsqlite3_sys::Struct_sqlite3_index_constraint'>Struct_sqlite3_index_constraint</a></a>,
     pub nOrderBy: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
-    pub aOrderBy: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_index_orderby.html' title='libsqlite3_sys::Struct_sqlite3_index_orderby'>Struct_sqlite3_index_orderby</a></a>,
-    pub aConstraintUsage: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_index_constraint_usage.html' title='libsqlite3_sys::Struct_sqlite3_index_constraint_usage'>Struct_sqlite3_index_constraint_usage</a></a>,
+    pub aOrderBy: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_index_orderby.html' title='libsqlite3_sys::Struct_sqlite3_index_orderby'>Struct_sqlite3_index_orderby</a></a>,
+    pub aConstraintUsage: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_index_constraint_usage.html' title='libsqlite3_sys::Struct_sqlite3_index_constraint_usage'>Struct_sqlite3_index_constraint_usage</a></a>,
     pub idxNum: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
-    pub idxStr: <a href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../libc/unix/notbsd/linux/other/b64/x86_64/type.c_char.html' title='libc::unix::notbsd::linux::other::b64::x86_64::c_char'>c_char</a></a>,
+    pub idxStr: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../libc/unix/notbsd/linux/other/b64/x86_64/type.c_char.html' title='libc::unix::notbsd::linux::other::b64::x86_64::c_char'>c_char</a></a>,
     pub needToFreeIdxStr: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
     pub orderByConsumed: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
     pub estimatedCost: <a class='type' href='../libc/type.c_double.html' title='libc::c_double'>c_double</a>,
@@ -132,6 +133,6 @@
     <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     
-    <script async src="../search-index.js"></script>
+    <script defer src="../search-index.js"></script>
 </body>
 </html>

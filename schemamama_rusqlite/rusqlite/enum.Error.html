@@ -9,6 +9,7 @@
 
     <title>rusqlite::Error - Rust</title>
 
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
 
     
@@ -47,14 +48,43 @@
             </a>
         </span><a id='src-312' class='srclink' href='../src/rusqlite/error.rs.html#13-65' title='goto source code'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Error {
-    // some variants omitted
+    SqliteFailure(<a class='struct' href='../libsqlite3_sys/error/struct.Error.html' title='libsqlite3_sys::error::Error'>Error</a>, <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;),
+    SqliteSingleThreadedMode,
+    FromSqlConversionFailure(<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='trait' href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html' title='std::error::Error'>Error</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a>&gt;),
+    Utf8Error(<a class='struct' href='https://doc.rust-lang.org/nightly/core/str/struct.Utf8Error.html' title='core::str::Utf8Error'>Utf8Error</a>),
+    NulError(<a class='struct' href='https://doc.rust-lang.org/nightly/std/ffi/c_str/struct.NulError.html' title='std::ffi::c_str::NulError'>NulError</a>),
+    InvalidParameterName(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>),
+    InvalidPath(<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.PathBuf.html' title='std::path::PathBuf'>PathBuf</a>),
+    ExecuteReturnedResults,
+    QueryReturnedNoRows,
+    GetFromStaleRow,
+    InvalidColumnIndex(<a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>),
+    InvalidColumnType,
 }</pre><div class='docblock'><p>Enum listing possible errors from rusqlite.</p>
-</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/core/str/struct.Utf8Error.html' title='core::str::Utf8Error'>Utf8Error</a>&gt; for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#method.from' class='fnname'>from</a>(err: <a class='struct' href='https://doc.rust-lang.org/nightly/core/str/struct.Utf8Error.html' title='core::str::Utf8Error'>Utf8Error</a>) -&gt; <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h4>
-</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/ffi/c_str/struct.NulError.html' title='std::ffi::c_str::NulError'>NulError</a>&gt; for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#method.from' class='fnname'>from</a>(err: <a class='struct' href='https://doc.rust-lang.org/nightly/std/ffi/c_str/struct.NulError.html' title='std::ffi::c_str::NulError'>NulError</a>) -&gt; <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h4>
+</div><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.SqliteFailure'><code>SqliteFailure</code></td><td><div class='docblock'><p>An error from an underlying SQLite call.</p>
+</div></td></tr><tr><td id='variant.SqliteSingleThreadedMode'><code>SqliteSingleThreadedMode</code></td><td><div class='docblock'><p>Error reported when attempting to open a connection when SQLite was configured to
+allow single-threaded use only.</p>
+</div></td></tr><tr><td id='variant.FromSqlConversionFailure'><code>FromSqlConversionFailure</code></td><td><div class='docblock'><p>An error case available for implementors of the <code>FromSql</code> trait.</p>
+</div></td></tr><tr><td id='variant.Utf8Error'><code>Utf8Error</code></td><td><div class='docblock'><p>Error converting a string to UTF-8.</p>
+</div></td></tr><tr><td id='variant.NulError'><code>NulError</code></td><td><div class='docblock'><p>Error converting a string to a C-compatible string because it contained an embedded nul.</p>
+</div></td></tr><tr><td id='variant.InvalidParameterName'><code>InvalidParameterName</code></td><td><div class='docblock'><p>Error when using SQL named parameters and passing a parameter name not present in the SQL.</p>
+</div></td></tr><tr><td id='variant.InvalidPath'><code>InvalidPath</code></td><td><div class='docblock'><p>Error converting a file path to a string.</p>
+</div></td></tr><tr><td id='variant.ExecuteReturnedResults'><code>ExecuteReturnedResults</code></td><td><div class='docblock'><p>Error returned when an <code>execute</code> call returns rowss.</p>
+</div></td></tr><tr><td id='variant.QueryReturnedNoRows'><code>QueryReturnedNoRows</code></td><td><div class='docblock'><p>Error when a query that was expected to return at least one row (e.g., for <code>query_row</code>)
+did not return any.</p>
+</div></td></tr><tr><td id='variant.GetFromStaleRow'><code>GetFromStaleRow</code></td><td><div class='docblock'><p>Error when trying to access a <code>Row</code> after stepping past it. See the discussion on
+the <code>Rows</code> type for more details.</p>
+</div></td></tr><tr><td id='variant.InvalidColumnIndex'><code>InvalidColumnIndex</code></td><td><div class='docblock'><p>Error when the value of a particular column is requested, but the index is out of range
+for the statement.</p>
+</div></td></tr><tr><td id='variant.InvalidColumnType'><code>InvalidColumnType</code></td><td><div class='docblock'><p>Error when the value of a particular column is requested, but the type of the result in
+that column cannot be converted to the requested Rust type.</p>
+</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/core/str/struct.Utf8Error.html' title='core::str::Utf8Error'>Utf8Error</a>&gt; for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#method.from' class='fnname'>from</a>(err: <a class='struct' href='https://doc.rust-lang.org/nightly/core/str/struct.Utf8Error.html' title='core::str::Utf8Error'>Utf8Error</a>) -&gt; <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/std/ffi/c_str/struct.NulError.html' title='std::ffi::c_str::NulError'>NulError</a>&gt; for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.from-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#method.from' class='fnname'>from</a>(err: <a class='struct' href='https://doc.rust-lang.org/nightly/std/ffi/c_str/struct.NulError.html' title='std::ffi::c_str::NulError'>NulError</a>) -&gt; <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h4>
 </div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
-</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html' title='std::error::Error'>Error</a> for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.description' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html#method.description' class='fnname'>description</a>(&amp;self) -&gt; &amp;<a href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html' title='std::error::Error'>Error</a> for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.description' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html#method.description' class='fnname'>description</a>(&amp;self) -&gt; &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></h4>
 <h4 id='method.cause' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html#method.cause' class='fnname'>cause</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a class='trait' href='https://doc.rust-lang.org/nightly/std/error/trait.Error.html' title='std::error::Error'>Error</a>&gt;</code></h4>
-</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a></code></h3><div class='impl-items'><h4 id='method.fmt-1' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -114,6 +144,6 @@
     <script src="../jquery.js"></script>
     <script src="../main.js"></script>
     
-    <script async src="../search-index.js"></script>
+    <script defer src="../search-index.js"></script>
 </body>
 </html>
