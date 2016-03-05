@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-37' class='srclink' href='../src/schemamama_rusqlite/lib.rs.html#43-45' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-37' class='srclink' href='../src/schemamama_rusqlite/src/lib.rs.html#43-45' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct SqliteAdapter&lt;'a&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>An adapter that allows its migrations to act upon PostgreSQL connection transactions.</p>
@@ -55,8 +55,8 @@
 </div><h4 id='method.setup_schema' class='method'><code>fn <a href='#method.setup_schema' class='fnname'>setup_schema</a>(&amp;self)</code></h4>
 <div class='docblock'><p>Create the tables Schemamama requires to keep track of schema state. If the tables already
 exist, this function has no operation.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='../schemamama/trait.Adapter.html' title='schemamama::Adapter'>Adapter</a> for <a class='struct' href='../schemamama_rusqlite/struct.SqliteAdapter.html' title='schemamama_rusqlite::SqliteAdapter'>SqliteAdapter</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='assoc_type.MigrationType' class='type'><code>type MigrationType = <a class='trait' href='../schemamama_rusqlite/trait.SqliteMigration.html' title='schemamama_rusqlite::SqliteMigration'>SqliteMigration</a></code></h4>
-<h4 id='assoc_type.Error' class='type'><code>type Error = <a class='enum' href='../schemamama_rusqlite/enum.SqliteMigrationError.html' title='schemamama_rusqlite::SqliteMigrationError'>SqliteMigrationError</a></code></h4>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='../schemamama/trait.Adapter.html' title='schemamama::Adapter'>Adapter</a> for <a class='struct' href='../schemamama_rusqlite/struct.SqliteAdapter.html' title='schemamama_rusqlite::SqliteAdapter'>SqliteAdapter</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='associatedtype.MigrationType' class='type'><code>type MigrationType = <a class='trait' href='../schemamama_rusqlite/trait.SqliteMigration.html' title='schemamama_rusqlite::SqliteMigration'>SqliteMigration</a></code></h4>
+<h4 id='associatedtype.Error' class='type'><code>type Error = <a class='enum' href='../schemamama_rusqlite/enum.SqliteMigrationError.html' title='schemamama_rusqlite::SqliteMigrationError'>SqliteMigrationError</a></code></h4>
 <h4 id='method.current_version' class='method'><code>fn <a href='../schemamama/trait.Adapter.html#method.current_version' class='fnname'>current_version</a>(&amp;self) -&gt; <a class='type' href='../schemamama_rusqlite/type.Result.html' title='schemamama_rusqlite::Result'>Result</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;&gt;</code></h4>
 <h4 id='method.migrated_versions' class='method'><code>fn <a href='../schemamama/trait.Adapter.html#method.migrated_versions' class='fnname'>migrated_versions</a>(&amp;self) -&gt; <a class='type' href='../schemamama_rusqlite/type.Result.html' title='schemamama_rusqlite::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/btree/set/struct.BTreeSet.html' title='collections::btree::set::BTreeSet'>BTreeSet</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;&gt;</code></h4>
 <h4 id='method.apply_migration' class='method'><code>fn <a href='../schemamama/trait.Adapter.html#method.apply_migration' class='fnname'>apply_migration</a>(&amp;self, migration: &amp;<a class='trait' href='../schemamama_rusqlite/trait.SqliteMigration.html' title='schemamama_rusqlite::SqliteMigration'>SqliteMigration</a>) -&gt; <a class='type' href='../schemamama_rusqlite/type.Result.html' title='schemamama_rusqlite::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
@@ -104,7 +104,7 @@ exist, this function has no operation.</p>
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
