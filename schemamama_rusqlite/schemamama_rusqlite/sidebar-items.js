@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["SqliteAdapter","An adapter that allows its migrations to act upon PostgreSQL connection transactions."]],"trait":[["SqliteMigration","A migration to be used within a PostgreSQL connection."]]});
+initSidebarItems({"enum":[["SqliteMigrationError",""]],"struct":[["SqliteAdapter","An adapter that allows its migrations to act upon PostgreSQL connection transactions."]],"trait":[["SqliteMigration","A migration to be used within a PostgreSQL connection."]],"type":[["Result",""]]});
