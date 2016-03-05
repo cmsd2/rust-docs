@@ -48,13 +48,13 @@
             </a>
         </span><a id='src-510' class='srclink' href='../src/libsqlite3_sys/bindgen.rs.html#755-773' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Struct_sqlite3_rtree_query_info {
-    pub pContext: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='enum' href='../libc/enum.c_void.html' title='libc::c_void'>c_void</a>,
+    pub pContext: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../libc/enum.c_void.html' title='libc::c_void'>c_void</a></a>,
     pub nParam: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
-    pub aParam: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='type' href='../libsqlite3_sys/type.sqlite3_rtree_dbl.html' title='libsqlite3_sys::sqlite3_rtree_dbl'>sqlite3_rtree_dbl</a>,
-    pub pUser: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='enum' href='../libc/enum.c_void.html' title='libc::c_void'>c_void</a>,
-    pub xDelUser: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "C" fn(arg1: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='enum' href='../libc/enum.c_void.html' title='libc::c_void'>c_void</a>)&gt;,
-    pub aCoord: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='type' href='../libsqlite3_sys/type.sqlite3_rtree_dbl.html' title='libsqlite3_sys::sqlite3_rtree_dbl'>sqlite3_rtree_dbl</a>,
-    pub anQueue: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='type' href='../libc/type.c_uint.html' title='libc::c_uint'>c_uint</a>,
+    pub aParam: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../libsqlite3_sys/type.sqlite3_rtree_dbl.html' title='libsqlite3_sys::sqlite3_rtree_dbl'>sqlite3_rtree_dbl</a></a>,
+    pub pUser: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../libc/enum.c_void.html' title='libc::c_void'>c_void</a></a>,
+    pub xDelUser: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "C" fn(arg1: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../libc/enum.c_void.html' title='libc::c_void'>c_void</a></a>)&gt;,
+    pub aCoord: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../libsqlite3_sys/type.sqlite3_rtree_dbl.html' title='libsqlite3_sys::sqlite3_rtree_dbl'>sqlite3_rtree_dbl</a></a>,
+    pub anQueue: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../libc/type.c_uint.html' title='libc::c_uint'>c_uint</a></a>,
     pub nCoord: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
     pub iLevel: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
     pub mxLevel: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>,
@@ -80,7 +80,7 @@
                                   <td id='structfield.eParentWithin'><code>eParentWithin</code></td><td></td></tr><tr class='stab '>
                                   <td id='structfield.eWithin'><code>eWithin</code></td><td></td></tr><tr class='stab '>
                                   <td id='structfield.rScore'><code>rScore</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_rtree_query_info.html' title='libsqlite3_sys::Struct_sqlite3_rtree_query_info'>Struct_sqlite3_rtree_query_info</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; Self</code></h4>
-<h4 id='method.clone_from' class='method'><span class="since">1.0.0</span><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
 </div><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a> for <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_rtree_query_info.html' title='libsqlite3_sys::Struct_sqlite3_rtree_query_info'>Struct_sqlite3_rtree_query_info</a></code></h3><div class='impl-items'><h4 id='method.default' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#method.default' class='fnname'>default</a>() -&gt; Self</code></h4>
 </div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../libsqlite3_sys/struct.Struct_sqlite3_rtree_query_info.html' title='libsqlite3_sys::Struct_sqlite3_rtree_query_info'>Struct_sqlite3_rtree_query_info</a></code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
@@ -125,7 +125,7 @@
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                    <code>vec -> usize</code>)
                 </p>
             </div>
         </div>
