@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,14 +44,15 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rusqlite</a>::<wbr><a class='struct' href=''>Statement</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-707' class='srclink' href='../src/rusqlite/lib.rs.html#702-707' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-701' class='srclink' href='../src/rusqlite/lib.rs.html#702-707' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Statement&lt;'conn&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A prepared statement.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'conn&gt; <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></h3><div class='impl-items'><h4 id='method.parameter_index' class='method'><code>fn <a href='#method.parameter_index' class='fnname'>parameter_index</a>(&amp;self, name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'conn&gt; <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-267' class='srclink' href='../src/rusqlite/named_params.rs.html#54-141' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.parameter_index' class='method'><code>fn <a href='#method.parameter_index' class='fnname'>parameter_index</a>(&amp;self, name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>&gt;&gt;</code></h4>
 <div class='docblock'><p>Return the index of an SQL parameter given its name.</p>
 
 <h1 id='failure' class='section-header'><a href='#failure'>Failure</a></h1>
@@ -94,7 +96,8 @@ resulting rows. If any parameters that were in the prepared statement are not in
 
 <h1 id='failure-2' class='section-header'><a href='#failure-2'>Failure</a></h1>
 <p>Will return <code>Err</code> if binding parameters fails.</p>
-</div></div><h3 class='impl'><code>impl&lt;'conn&gt; <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></h3><div class='impl-items'><h4 id='method.column_names' class='method'><code>fn <a href='#method.column_names' class='fnname'>column_names</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'conn&gt; <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-707' class='srclink' href='../src/rusqlite/lib.rs.html#709-898' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.column_names' class='method'><code>fn <a href='#method.column_names' class='fnname'>column_names</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;</code></h4>
 <div class='docblock'><p>Get all the column names in the result set of the prepared statement.</p>
 </div><h4 id='method.execute' class='method'><code>fn <a href='#method.execute' class='fnname'>execute</a>(&amp;mut self, params: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>&amp;<a class='trait' href='../rusqlite/types/trait.ToSql.html' title='rusqlite::types::ToSql'>ToSql</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>&gt;</code></h4>
 <div class='docblock'><p>Execute the prepared statement.</p>
@@ -136,7 +139,7 @@ which case <code>query</code> should be used instead), or the underling SQLite c
 
 <h1 id='failure-4' class='section-header'><a href='#failure-4'>Failure</a></h1>
 <p>Will return <code>Err</code> if binding parameters fails.</p>
-</div><h4 id='method.query_map' class='method'><code>fn <a href='#method.query_map' class='fnname'>query_map</a>&lt;'a, T, F&gt;(&amp;'a mut self, params: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>&amp;<a class='trait' href='../rusqlite/types/trait.ToSql.html' title='rusqlite::types::ToSql'>ToSql</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, f: F) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='struct' href='../rusqlite/struct.MappedRows.html' title='rusqlite::MappedRows'>MappedRows</a>&lt;'a, F&gt;&gt; <span class='where'>where F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(&amp;<a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>) -&gt; T</span></code></h4>
+</div><h4 id='method.query_map' class='method'><code>fn <a href='#method.query_map' class='fnname'>query_map</a>&lt;'a,&nbsp;T,&nbsp;F&gt;(&amp;'a mut self, params: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>&amp;<a class='trait' href='../rusqlite/types/trait.ToSql.html' title='rusqlite::types::ToSql'>ToSql</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, f: F) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='struct' href='../rusqlite/struct.MappedRows.html' title='rusqlite::MappedRows'>MappedRows</a>&lt;'a,&nbsp;F&gt;&gt; <span class='where'>where F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(&amp;<a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>) -&gt; T</span></code></h4>
 <div class='docblock'><p>Executes the prepared statement and maps a function over the resulting
 rows.</p>
 
@@ -145,7 +148,7 @@ for accessing stale rows.</p>
 
 <h1 id='failure-5' class='section-header'><a href='#failure-5'>Failure</a></h1>
 <p>Will return <code>Err</code> if binding parameters fails.</p>
-</div><h4 id='method.query_and_then' class='method'><code>fn <a href='#method.query_and_then' class='fnname'>query_and_then</a>&lt;'a, T, E, F&gt;(&amp;'a mut self, params: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>&amp;<a class='trait' href='../rusqlite/types/trait.ToSql.html' title='rusqlite::types::ToSql'>ToSql</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, f: F) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='struct' href='../rusqlite/struct.AndThenRows.html' title='rusqlite::AndThenRows'>AndThenRows</a>&lt;'a, F&gt;&gt; <span class='where'>where E: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a>&gt;, F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(&amp;<a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;T, E&gt;</span></code></h4>
+</div><h4 id='method.query_and_then' class='method'><code>fn <a href='#method.query_and_then' class='fnname'>query_and_then</a>&lt;'a,&nbsp;T,&nbsp;E,&nbsp;F&gt;(&amp;'a mut self, params: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>&amp;<a class='trait' href='../rusqlite/types/trait.ToSql.html' title='rusqlite::types::ToSql'>ToSql</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, f: F) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='struct' href='../rusqlite/struct.AndThenRows.html' title='rusqlite::AndThenRows'>AndThenRows</a>&lt;'a,&nbsp;F&gt;&gt; <span class='where'>where E: <a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html' title='core::convert::From'>From</a>&lt;<a class='enum' href='../rusqlite/enum.Error.html' title='rusqlite::Error'>Error</a>&gt;, F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(&amp;<a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;T,&nbsp;E&gt;</span></code></h4>
 <div class='docblock'><p>Executes the prepared statement and maps a function over the resulting
 rows, where the function returns a <code>Result</code> with <code>Error</code> type implementing
 <code>std::convert::From&lt;Error&gt;</code> (so errors can be unified).</p>
@@ -163,9 +166,13 @@ that occur.</p>
 
 <h1 id='failure-7' class='section-header'><a href='#failure-7'>Failure</a></h1>
 <p>Will return <code>Err</code> if the underlying SQLite call fails.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'conn&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
-</div><h3 class='impl'><code>impl&lt;'conn&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></h3><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
-</div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'conn&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-772' class='srclink' href='../src/rusqlite/lib.rs.html#900-912' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'conn&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../rusqlite/struct.Statement.html' title='rusqlite::Statement'>Statement</a>&lt;'conn&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-779' class='srclink' href='../src/rusqlite/lib.rs.html#914-919' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -188,6 +195,8 @@ that occur.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

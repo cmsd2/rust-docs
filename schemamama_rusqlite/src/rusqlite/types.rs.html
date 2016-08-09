@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-88ac128001ac3a9a/rusqlite-0.6.0/src/types.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/rusqlite-0.6.0/src/types.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>types.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
+    
 
     
     
@@ -543,8 +544,8 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>ffi</span>::<span class='ident'>CStr</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>mem</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>str</span>;
-<span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>ffi</span>;
-<span class='kw'>use</span> <span class='ident'>super</span>::{<span class='prelude-ty'>Result</span>, <span class='ident'>Error</span>, <span class='ident'>str_to_cstring</span>};
+<span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>ffi</span>;
+<span class='kw'>use</span> <span class='kw'>super</span>::{<span class='prelude-ty'>Result</span>, <span class='ident'>Error</span>, <span class='ident'>str_to_cstring</span>};
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_stmt</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_column_type</span>;
@@ -560,14 +561,14 @@
 
 <span class='doccomment'>/// A trait for types that can be created from a SQLite value.</span>
 <span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>FromSql</span>: <span class='ident'>Sized</span> {
-    <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>column_result</span>(<span class='ident'>stmt</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, <span class='ident'>col</span>: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='kw'>Self</span><span class='op'>&gt;</span>;
+    <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>column_result</span>(<span class='ident'>stmt</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, <span class='ident'>col</span>: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='self'>Self</span><span class='op'>&gt;</span>;
 
     <span class='doccomment'>/// FromSql types can implement this method and use sqlite3_column_type to check that</span>
     <span class='doccomment'>/// the type reported by SQLite matches a type suitable for Self. This method is used</span>
     <span class='doccomment'>/// by `Row::get_checked` to confirm that the column contains a valid type before</span>
     <span class='doccomment'>/// attempting to retrieve the value.</span>
     <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>column_has_valid_sqlite_type</span>(_: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, _: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-        <span class='boolval'>true</span>
+        <span class='bool-val'>true</span>
     }
 }
 
@@ -588,7 +589,7 @@
 <span class='kw'>impl</span> <span class='ident'>ToSql</span> <span class='kw'>for</span> <span class='ident'>bool</span> {
     <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>bind_parameter</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>stmt</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, <span class='ident'>col</span>: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='ident'>c_int</span> {
         <span class='kw'>match</span> <span class='op'>*</span><span class='self'>self</span> {
-            <span class='boolval'>true</span> <span class='op'>=&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_bind_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>, <span class='number'>1</span>),
+            <span class='bool-val'>true</span> <span class='op'>=&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_bind_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>, <span class='number'>1</span>),
             _ <span class='op'>=&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_bind_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>, <span class='number'>0</span>),
         }
     }
@@ -700,8 +701,8 @@
 <span class='kw'>impl</span> <span class='ident'>FromSql</span> <span class='kw'>for</span> <span class='ident'>bool</span> {
     <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>column_result</span>(<span class='ident'>stmt</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, <span class='ident'>col</span>: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span> {
         <span class='kw'>match</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_column_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>) {
-            <span class='number'>0</span> <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='boolval'>false</span>),
-            _ <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='boolval'>true</span>),
+            <span class='number'>0</span> <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='bool-val'>false</span>),
+            _ <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='bool-val'>true</span>),
         }
     }
 
@@ -781,7 +782,7 @@
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
 <span class='kw'>mod</span> <span class='ident'>test</span> {
     <span class='kw'>use</span> <span class='ident'>Connection</span>;
-    <span class='kw'>use</span> <span class='ident'>super</span>::<span class='ident'>time</span>;
+    <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>time</span>;
     <span class='kw'>use</span> <span class='ident'>Error</span>;
     <span class='kw'>use</span> <span class='ident'>libc</span>::{<span class='ident'>c_int</span>, <span class='ident'>c_double</span>};
 
@@ -857,8 +858,8 @@
     <span class='kw'>fn</span> <span class='ident'>test_mismatched_types</span>() {
         <span class='kw'>fn</span> <span class='ident'>is_invalid_column_type</span>(<span class='ident'>err</span>: <span class='ident'>Error</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
             <span class='kw'>match</span> <span class='ident'>err</span> {
-                <span class='ident'>Error</span>::<span class='ident'>InvalidColumnType</span> <span class='op'>=&gt;</span> <span class='boolval'>true</span>,
-                _ <span class='op'>=&gt;</span> <span class='boolval'>false</span>,
+                <span class='ident'>Error</span>::<span class='ident'>InvalidColumnType</span> <span class='op'>=&gt;</span> <span class='bool-val'>true</span>,
+                _ <span class='op'>=&gt;</span> <span class='bool-val'>false</span>,
             }
         }
 
@@ -948,6 +949,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

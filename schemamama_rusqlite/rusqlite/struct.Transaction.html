@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rusqlite</a>::<wbr><a class='struct' href=''>Transaction</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-203' class='srclink' href='../src/rusqlite/transaction.rs.html#41-46' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-201' class='srclink' href='../src/rusqlite/transaction.rs.html#41-46' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Transaction&lt;'conn&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Represents a transaction on a database connection.</p>
@@ -65,7 +66,8 @@ transaction.</p>
 
     <span class='ident'>tx</span>.<span class='ident'>commit</span>()
 }</pre>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'conn&gt; <a class='struct' href='../rusqlite/struct.Transaction.html' title='rusqlite::Transaction'>Transaction</a>&lt;'conn&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(conn: &amp;<a class='struct' href='../rusqlite/struct.Connection.html' title='rusqlite::Connection'>Connection</a>, behavior: <a class='enum' href='../rusqlite/enum.TransactionBehavior.html' title='rusqlite::TransactionBehavior'>TransactionBehavior</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='struct' href='../rusqlite/struct.Transaction.html' title='rusqlite::Transaction'>Transaction</a>&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'conn&gt; <a class='struct' href='../rusqlite/struct.Transaction.html' title='rusqlite::Transaction'>Transaction</a>&lt;'conn&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-207' class='srclink' href='../src/rusqlite/transaction.rs.html#48-169' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(conn: &amp;<a class='struct' href='../rusqlite/struct.Connection.html' title='rusqlite::Connection'>Connection</a>, behavior: <a class='enum' href='../rusqlite/enum.TransactionBehavior.html' title='rusqlite::TransactionBehavior'>TransactionBehavior</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='struct' href='../rusqlite/struct.Transaction.html' title='rusqlite::Transaction'>Transaction</a>&gt;</code></h4>
 <div class='docblock'><p>Begin a new transaction. Cannot be nested; see <code>savepoint</code> for nested transactions.</p>
 </div><h4 id='method.savepoint' class='method'><code>fn <a href='#method.savepoint' class='fnname'>savepoint</a>&lt;'a&gt;(&amp;'a self) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;<a class='struct' href='../rusqlite/struct.Transaction.html' title='rusqlite::Transaction'>Transaction</a>&lt;'a&gt;&gt;</code></h4>
 <div class='docblock'><p>Starts a new <a href="http://www.sqlite.org/lang_savepoint.html">savepoint</a>, allowing nested
@@ -107,8 +109,10 @@ transactions.</p>
 
 <p>Functionally equivalent to the <code>Drop</code> implementation, but allows callers to see any
 errors that occur.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'conn&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../rusqlite/struct.Transaction.html' title='rusqlite::Transaction'>Transaction</a>&lt;'conn&gt;</code></h3><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
-</div></section>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'conn&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../rusqlite/struct.Transaction.html' title='rusqlite::Transaction'>Transaction</a>&lt;'conn&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-238' class='srclink' href='../src/rusqlite/transaction.rs.html#172-176' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p>
+</div></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -131,6 +135,8 @@ errors that occur.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

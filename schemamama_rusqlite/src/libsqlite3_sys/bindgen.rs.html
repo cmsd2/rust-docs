@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-88ac128001ac3a9a/libsqlite3-sys-0.4.0/src/bindgen.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/libsqlite3-sys-0.4.0/src/bindgen.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>bindgen.rs.html -- source</title>
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
+    
 
     
     
@@ -1667,10 +1668,10 @@
     <span class='kw'>pub</span> <span class='ident'>pMethods</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>Struct_sqlite3_io_methods</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_file</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_file</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_io_methods</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_io_methods</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
@@ -1784,10 +1785,10 @@
                                             <span class='op'>-&gt;</span> ::<span class='ident'>libc</span>::<span class='ident'>c_int</span><span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_io_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_io_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Struct_sqlite3_mutex</span> { }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_mutex</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_mutex</span>;
@@ -1918,10 +1919,10 @@
                                                    <span class='op'>-&gt;</span> <span class='op'>*</span><span class='kw'>const</span> ::<span class='ident'>libc</span>::<span class='ident'>c_char</span><span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_vfs</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_vfs</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_mem_methods</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_mem_methods</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
@@ -1951,10 +1952,10 @@
     <span class='kw'>pub</span> <span class='ident'>pAppData</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>libc</span>::<span class='ident'>c_void</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_mem_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_mem_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Struct_sqlite3_stmt</span> { }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_stmt</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_stmt</span>;
@@ -2108,10 +2109,10 @@
                                                <span class='op'>-&gt;</span> ::<span class='ident'>libc</span>::<span class='ident'>c_int</span><span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_module</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_module</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
@@ -2129,10 +2130,10 @@
     <span class='kw'>pub</span> <span class='ident'>estimatedRows</span>: <span class='ident'>sqlite3_int64</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_info</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_info</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
@@ -2143,10 +2144,10 @@
     <span class='kw'>pub</span> <span class='ident'>iTermOffset</span>: ::<span class='ident'>libc</span>::<span class='ident'>c_int</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_constraint</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_constraint</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
@@ -2155,10 +2156,10 @@
     <span class='kw'>pub</span> <span class='ident'>desc</span>: ::<span class='ident'>libc</span>::<span class='ident'>c_uchar</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_orderby</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_orderby</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
@@ -2167,10 +2168,10 @@
     <span class='kw'>pub</span> <span class='ident'>omit</span>: ::<span class='ident'>libc</span>::<span class='ident'>c_uchar</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_constraint_usage</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_index_constraint_usage</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
@@ -2180,10 +2181,10 @@
     <span class='kw'>pub</span> <span class='ident'>zErrMsg</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>libc</span>::<span class='ident'>c_char</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_vtab</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_vtab</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
@@ -2191,10 +2192,10 @@
     <span class='kw'>pub</span> <span class='ident'>pVtab</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_vtab</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_vtab_cursor</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_vtab_cursor</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Struct_sqlite3_blob</span> { }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_blob</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_blob</span>;
@@ -2226,10 +2227,10 @@
                                                  <span class='op'>-&gt;</span> ::<span class='ident'>libc</span>::<span class='ident'>c_int</span><span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_mutex_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_mutex_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Struct_sqlite3_pcache</span> { }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_pcache</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_pcache</span>;
@@ -2241,10 +2242,10 @@
     <span class='kw'>pub</span> <span class='ident'>pExtra</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>libc</span>::<span class='ident'>c_void</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_pcache_page</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_pcache_page</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_pcache_methods2</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_pcache_methods2</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
@@ -2307,10 +2308,10 @@
                                            <span class='op'>-&gt;</span> ()<span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_pcache_methods2</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_pcache_methods2</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_pcache_methods</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_pcache_methods</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
@@ -2368,10 +2369,10 @@
                                             <span class='op'>-&gt;</span> ()<span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_pcache_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_pcache_methods</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Struct_sqlite3_backup</span> { }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>sqlite3_backup</span> <span class='op'>=</span> <span class='ident'>Struct_sqlite3_backup</span>;
@@ -2390,10 +2391,10 @@
                                             <span class='op'>-&gt;</span> ()<span class='op'>&gt;</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_rtree_geometry</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_rtree_geometry</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>)]</span>
@@ -2417,10 +2418,10 @@
     <span class='kw'>pub</span> <span class='ident'>rScore</span>: <span class='ident'>sqlite3_rtree_dbl</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_rtree_query_info</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct_sqlite3_rtree_query_info</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>__builtin_va_list</span> <span class='op'>=</span> [<span class='ident'>__va_list_tag</span>; <span class='number'>1usize</span>];
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>__va_list_tag</span> <span class='op'>=</span> <span class='ident'>Struct___va_list_tag</span>;
@@ -2433,10 +2434,10 @@
     <span class='kw'>pub</span> <span class='ident'>reg_save_area</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>libc</span>::<span class='ident'>c_void</span>,
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>clone</span>::<span class='ident'>Clone</span> <span class='kw'>for</span> <span class='ident'>Struct___va_list_tag</span> {
-    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
+    <span class='kw'>fn</span> <span class='ident'>clone</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='op'>*</span><span class='self'>self</span> }
 }
 <span class='kw'>impl</span> ::<span class='ident'>std</span>::<span class='ident'>default</span>::<span class='ident'>Default</span> <span class='kw'>for</span> <span class='ident'>Struct___va_list_tag</span> {
-    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='kw'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
+    <span class='kw'>fn</span> <span class='ident'>default</span>() <span class='op'>-&gt;</span> <span class='self'>Self</span> { <span class='kw'>unsafe</span> { ::<span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>() } }
 }
 <span class='attribute'>#[<span class='ident'>link</span>(<span class='ident'>name</span> <span class='op'>=</span> <span class='string'>&quot;sqlite3&quot;</span>)]</span>
 <span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> {
@@ -3268,6 +3269,8 @@
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

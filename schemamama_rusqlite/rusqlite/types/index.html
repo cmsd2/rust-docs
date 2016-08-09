@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../../main.css">
+    
 
     
     
@@ -43,10 +44,10 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>rusqlite</a>::<wbr><a class='mod' href=''>types</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-23' class='srclink' href='../../src/rusqlite/types.rs.html#1-441' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-23' class='srclink' href='../../src/rusqlite/types.rs.html#1-441' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Traits dealing with SQLite data types.</p>
 
 <p>SQLite uses a <a href="https://www.sqlite.org/datatype3.html">dynamic type system</a>. Implementations of
@@ -103,90 +104,80 @@ empty string, or an empty vector of bytes.</p>
 }</pre>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Null.html'
-                               title='rusqlite::types::Null'>Null</a></td>
-                        <td class='docblock short'>
-                             <p>Empty struct that can be used to fill in a query parameter as <code>NULL</code>.</p>
-                        </td>
-                    </tr>
-                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='struct' href='struct.Null.html'
+                                  title='rusqlite::types::Null'>Null</a></td>
+                           <td class='docblock short'>
+                                <p>Empty struct that can be used to fill in a query parameter as <code>NULL</code>.</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='constant' href='constant.SQLITE_BLOB.html'
-                               title='rusqlite::types::SQLITE_BLOB'>SQLITE_BLOB</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='constant' href='constant.SQLITE_FLOAT.html'
-                               title='rusqlite::types::SQLITE_FLOAT'>SQLITE_FLOAT</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='constant' href='constant.SQLITE_INTEGER.html'
-                               title='rusqlite::types::SQLITE_INTEGER'>SQLITE_INTEGER</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='constant' href='constant.SQLITE_NULL.html'
-                               title='rusqlite::types::SQLITE_NULL'>SQLITE_NULL</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='constant' href='constant.SQLITE_TEXT.html'
-                               title='rusqlite::types::SQLITE_TEXT'>SQLITE_TEXT</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SQLITE_BLOB.html'
+                                  title='rusqlite::types::SQLITE_BLOB'>SQLITE_BLOB</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SQLITE_FLOAT.html'
+                                  title='rusqlite::types::SQLITE_FLOAT'>SQLITE_FLOAT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SQLITE_INTEGER.html'
+                                  title='rusqlite::types::SQLITE_INTEGER'>SQLITE_INTEGER</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SQLITE_NULL.html'
+                                  title='rusqlite::types::SQLITE_NULL'>SQLITE_NULL</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='constant' href='constant.SQLITE_TEXT.html'
+                                  title='rusqlite::types::SQLITE_TEXT'>SQLITE_TEXT</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='trait' href='trait.FromSql.html'
-                               title='rusqlite::types::FromSql'>FromSql</a></td>
-                        <td class='docblock short'>
-                             <p>A trait for types that can be created from a SQLite value.</p>
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='trait' href='trait.ToSql.html'
-                               title='rusqlite::types::ToSql'>ToSql</a></td>
-                        <td class='docblock short'>
-                             <p>A trait for types that can be converted into SQLite values.</p>
-                        </td>
-                    </tr>
-                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.FromSql.html'
+                                  title='rusqlite::types::FromSql'>FromSql</a></td>
+                           <td class='docblock short'>
+                                <p>A trait for types that can be created from a SQLite value.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.ToSql.html'
+                                  title='rusqlite::types::ToSql'>ToSql</a></td>
+                           <td class='docblock short'>
+                                <p>A trait for types that can be converted into SQLite values.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.sqlite3_column_type.html'
-                               title='rusqlite::types::sqlite3_column_type'>sqlite3_column_type</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.sqlite3_column_type.html'
+                                  title='rusqlite::types::sqlite3_column_type'>sqlite3_column_type</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='type' href='type.sqlite3_stmt.html'
-                               title='rusqlite::types::sqlite3_stmt'>sqlite3_stmt</a></td>
-                        <td class='docblock short'>
-                             
-                        </td>
-                    </tr>
-                </table></section>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.sqlite3_stmt.html'
+                                  title='rusqlite::types::sqlite3_stmt'>sqlite3_stmt</a></td>
+                           <td class='docblock short'>
+                                
+                           </td>
+                       </tr></table></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -209,6 +200,8 @@ empty string, or an empty vector of bytes.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

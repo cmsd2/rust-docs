@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,14 +44,15 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>rusqlite</a>::<wbr><a class='struct' href=''>Row</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-850' class='srclink' href='../src/rusqlite/lib.rs.html#1048-1052' title='goto source code'>[src]</a></span></h1>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-840' class='srclink' href='../src/rusqlite/lib.rs.html#1048-1052' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Row&lt;'stmt&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A single result row of a query.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'stmt&gt; <a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>&lt;'stmt&gt;</code></h3><div class='impl-items'><h4 id='method.get' class='method'><code>fn <a href='#method.get' class='fnname'>get</a>&lt;T: <a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; T</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'stmt&gt; <a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>&lt;'stmt&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-845' class='srclink' href='../src/rusqlite/lib.rs.html#1054-1112' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.get' class='method'><code>fn <a href='#method.get' class='fnname'>get</a>&lt;T:&nbsp;<a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; T</code></h4>
 <div class='docblock'><p>Get the value of a particular column of the result row.</p>
 
 <p>Note that <code>Row</code> can panic at runtime if you use it incorrectly. When you are
@@ -76,7 +78,7 @@ for example) this isn&#39;t an issue, but it means you cannot do something like 
 <h2 id='failure' class='section-header'><a href='#failure'>Failure</a></h2>
 <p>Panics if <code>idx</code> is outside the range of columns in the returned query or if this row
 is stale.</p>
-</div><h4 id='method.get_checked' class='method'><code>fn <a href='#method.get_checked' class='fnname'>get_checked</a>&lt;T: <a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;T&gt;</code></h4>
+</div><h4 id='method.get_checked' class='method'><code>fn <a href='#method.get_checked' class='fnname'>get_checked</a>&lt;T:&nbsp;<a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;T&gt;</code></h4>
 <div class='docblock'><p>Get the value of a particular column of the result row.</p>
 
 <h2 id='failure-1' class='section-header'><a href='#failure-1'>Failure</a></h2>
@@ -108,6 +110,8 @@ for this row or if this row is stale.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 

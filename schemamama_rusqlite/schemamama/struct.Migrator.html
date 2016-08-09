@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
+    
 
     
     
@@ -43,14 +44,15 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>schemamama</a>::<wbr><a class='struct' href=''>Migrator</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-25' class='srclink' href='../src/schemamama/lib.rs.html#70-73' title='goto source code'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct Migrator&lt;T: <a class='trait' href='../schemamama/trait.Adapter.html' title='schemamama::Adapter'>Adapter</a>&gt; {
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-25' class='srclink' href='../src/schemamama/lib.rs.html#70-73' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Migrator&lt;T:&nbsp;<a class='trait' href='../schemamama/trait.Adapter.html' title='schemamama::Adapter'>Adapter</a>&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Maintains an ordered collection of migrations to utilize.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T: <a class='trait' href='../schemamama/trait.Adapter.html' title='schemamama::Adapter'>Adapter</a>&gt; <a class='struct' href='../schemamama/struct.Migrator.html' title='schemamama::Migrator'>Migrator</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(adapter: T) -&gt; <a class='struct' href='../schemamama/struct.Migrator.html' title='schemamama::Migrator'>Migrator</a>&lt;T&gt;</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='../schemamama/trait.Adapter.html' title='schemamama::Adapter'>Adapter</a>&gt; <a class='struct' href='../schemamama/struct.Migrator.html' title='schemamama::Migrator'>Migrator</a>&lt;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-29' class='srclink' href='../src/schemamama/lib.rs.html#75-173' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(adapter: T) -&gt; <a class='struct' href='../schemamama/struct.Migrator.html' title='schemamama::Migrator'>Migrator</a>&lt;T&gt;</code></h4>
 <div class='docblock'><p>Create a migrator with a given adapter.</p>
 </div><h4 id='method.adapter' class='method'><code>fn <a href='#method.adapter' class='fnname'>adapter</a>(&amp;self) -&gt; &amp;T</code></h4>
 <div class='docblock'><p>Get a reference to the adapter.</p>
@@ -67,14 +69,14 @@ been registered.</p>
 </div><h4 id='method.last_version' class='method'><code>fn <a href='#method.last_version' class='fnname'>last_version</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;</code></h4>
 <div class='docblock'><p>Returns the highest version of the registered migrations, or <code>None</code> if no migrations have
 been registered.</p>
-</div><h4 id='method.current_version' class='method'><code>fn <a href='#method.current_version' class='fnname'>current_version</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;, T::Error&gt;</code></h4>
+</div><h4 id='method.current_version' class='method'><code>fn <a href='#method.current_version' class='fnname'>current_version</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;,&nbsp;T::Error&gt;</code></h4>
 <div class='docblock'><p>Returns the latest migration version, or <code>None</code> if no migrations have been recorded.</p>
-</div><h4 id='method.migrated_versions' class='method'><code>fn <a href='#method.migrated_versions' class='fnname'>migrated_versions</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/btree/set/struct.BTreeSet.html' title='collections::btree::set::BTreeSet'>BTreeSet</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;, T::Error&gt;</code></h4>
+</div><h4 id='method.migrated_versions' class='method'><code>fn <a href='#method.migrated_versions' class='fnname'>migrated_versions</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/btree/set/struct.BTreeSet.html' title='collections::btree::set::BTreeSet'>BTreeSet</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;,&nbsp;T::Error&gt;</code></h4>
 <div class='docblock'><p>Returns a set of the versions of all of the currently applied migrations.</p>
-</div><h4 id='method.down' class='method'><code>fn <a href='#method.down' class='fnname'>down</a>(&amp;self, to: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, T::Error&gt;</code></h4>
+</div><h4 id='method.down' class='method'><code>fn <a href='#method.down' class='fnname'>down</a>(&amp;self, to: <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>&gt;) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>,&nbsp;T::Error&gt;</code></h4>
 <div class='docblock'><p>Rollback to the specified version (exclusive), or rollback to the state before any
 registered migrations were applied if <code>None</code> is specified.</p>
-</div><h4 id='method.up' class='method'><code>fn <a href='#method.up' class='fnname'>up</a>(&amp;self, to: <a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, T::Error&gt;</code></h4>
+</div><h4 id='method.up' class='method'><code>fn <a href='#method.up' class='fnname'>up</a>(&amp;self, to: <a class='type' href='../schemamama/type.Version.html' title='schemamama::Version'>Version</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>,&nbsp;T::Error&gt;</code></h4>
 <div class='docblock'><p>Migrate to the specified version (inclusive).</p>
 </div></div></section>
     <section id='search' class="content hidden"></section>
@@ -99,6 +101,8 @@ registered migrations were applied if <code>None</code> is specified.</p>
                     <dd>Move down in search results</dd>
                     <dt>&#9166;</dt>
                     <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
                 </dl>
             </div>
 
