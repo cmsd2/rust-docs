@@ -389,7 +389,7 @@
         <span class='self'>self</span>.<span class='ident'>reset_if_needed</span>();
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>bind_parameters_named</span>(<span class='ident'>params</span>));
 
-        <span class='self'>self</span>.<span class='ident'>needs_reset</span> <span class='op'>=</span> <span class='boolvalue'>true</span>;
+        <span class='self'>self</span>.<span class='ident'>needs_reset</span> <span class='op'>=</span> <span class='bool-val'>true</span>;
         <span class='prelude-val'>Ok</span>(<span class='ident'>Rows</span>::<span class='ident'>new</span>(<span class='self'>self</span>))
     }
 

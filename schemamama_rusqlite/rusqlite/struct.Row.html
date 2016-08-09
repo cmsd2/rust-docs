@@ -47,12 +47,12 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-844' class='srclink' href='../src/rusqlite/lib.rs.html#1048-1052' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-840' class='srclink' href='../src/rusqlite/lib.rs.html#1048-1052' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Row&lt;'stmt&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A single result row of a query.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'stmt&gt; <a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>&lt;'stmt&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-849' class='srclink' href='../src/rusqlite/lib.rs.html#1054-1112' title='goto source code'>[src]</a></span></h3>
-<div class='impl-items'><h4 id='method.get' class='method'><code>fn <a href='#method.get' class='fnname'>get</a>&lt;T: <a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; T</code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'stmt&gt; <a class='struct' href='../rusqlite/struct.Row.html' title='rusqlite::Row'>Row</a>&lt;'stmt&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a id='src-845' class='srclink' href='../src/rusqlite/lib.rs.html#1054-1112' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.get' class='method'><code>fn <a href='#method.get' class='fnname'>get</a>&lt;T:&nbsp;<a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; T</code></h4>
 <div class='docblock'><p>Get the value of a particular column of the result row.</p>
 
 <p>Note that <code>Row</code> can panic at runtime if you use it incorrectly. When you are
@@ -78,7 +78,7 @@ for example) this isn&#39;t an issue, but it means you cannot do something like 
 <h2 id='failure' class='section-header'><a href='#failure'>Failure</a></h2>
 <p>Panics if <code>idx</code> is outside the range of columns in the returned query or if this row
 is stale.</p>
-</div><h4 id='method.get_checked' class='method'><code>fn <a href='#method.get_checked' class='fnname'>get_checked</a>&lt;T: <a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;T&gt;</code></h4>
+</div><h4 id='method.get_checked' class='method'><code>fn <a href='#method.get_checked' class='fnname'>get_checked</a>&lt;T:&nbsp;<a class='trait' href='../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt;(&amp;self, idx: <a class='type' href='../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; <a class='type' href='../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;T&gt;</code></h4>
 <div class='docblock'><p>Get the value of a particular column of the result row.</p>
 
 <h2 id='failure-1' class='section-header'><a href='#failure-1'>Failure</a></h2>

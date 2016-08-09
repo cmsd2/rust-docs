@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/schemamama-0.1.0/src/lib.rs`.">
+    <meta name="description" content="Source to the Rust file `/home/travis/.cargo/registry/src/github.com-1ecc6299db9ec823/schemamama-0.2.0/src/lib.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>lib.rs.html -- source</title>
@@ -242,6 +242,63 @@
 <span id="198">198</span>
 <span id="199">199</span>
 <span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
 </pre><pre class='rust '>
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>log</span>;
@@ -260,6 +317,32 @@
 
     <span class='doccomment'>/// A message describing the effects of this migration.</span>
     <span class='kw'>fn</span> <span class='ident'>description</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span>;
+}
+
+<span class='doccomment'>/// A migration&#39;s direction.</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Direction</span> {
+    <span class='ident'>Down</span>,
+    <span class='ident'>Up</span>,
+}
+
+<span class='doccomment'>/// An all-encompassing error type that can be returned during interaction with the migrator</span>
+<span class='doccomment'>/// adapter.</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Error</span><span class='op'>&lt;</span><span class='ident'>E</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// A generic error that occurred while interacting with the adapter.</span>
+    <span class='ident'>Adapter</span>(<span class='ident'>E</span>),
+    <span class='doccomment'>/// An error that arose from the adapter specifically during a migration&#39;s execution.</span>
+    <span class='ident'>Migration</span> {
+        <span class='doccomment'>/// The version of the migration that failed.</span>
+        <span class='ident'>version</span>: <span class='ident'>Version</span>,
+        <span class='doccomment'>/// The description of the migration that failed.</span>
+        <span class='ident'>description</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span>,
+        <span class='doccomment'>/// The direction in which the failed migration was ran.</span>
+        <span class='ident'>direction</span>: <span class='ident'>Direction</span>,
+        <span class='doccomment'>/// The underlying error from the adapter.</span>
+        <span class='ident'>error</span>: <span class='ident'>E</span>,
+    }
 }
 
 <span class='doccomment'>/// Efficiently implement the `Migration` trait for a given type.</span>
@@ -362,22 +445,28 @@
     }
 
     <span class='doccomment'>/// Returns the latest migration version, or `None` if no migrations have been recorded.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>current_version</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>, <span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>current_version</span>()
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>current_version</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>, <span class='ident'>Error</span><span class='op'>&lt;</span><span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;&gt;</span> {
+        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>current_version</span>() {
+            <span class='prelude-val'>Ok</span>(<span class='ident'>ver</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='ident'>ver</span>),
+            <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Err</span>(<span class='ident'>Error</span>::<span class='ident'>Adapter</span>(<span class='ident'>err</span>)),
+        }
     }
 
     <span class='doccomment'>/// Returns a set of the versions of all of the currently applied migrations.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>migrated_versions</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>BTreeSet</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>, <span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>migrated_versions</span>()
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>migrated_versions</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>BTreeSet</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>, <span class='ident'>Error</span><span class='op'>&lt;</span><span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;&gt;</span> {
+        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>migrated_versions</span>() {
+            <span class='prelude-val'>Ok</span>(<span class='ident'>vers</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='ident'>vers</span>),
+            <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Err</span>(<span class='ident'>Error</span>::<span class='ident'>Adapter</span>(<span class='ident'>err</span>)),
+        }
     }
 
     <span class='doccomment'>/// Rollback to the specified version (exclusive), or rollback to the state before any</span>
     <span class='doccomment'>/// registered migrations were applied if `None` is specified.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>down</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>to</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='ident'>from</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>current_version</span>()) {
-            <span class='prelude-val'>Some</span>(<span class='ident'>version</span>) <span class='op'>=&gt;</span> <span class='ident'>version</span>,
-            <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='prelude-val'>Ok</span>(()),
-        };
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>down</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>to</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>Error</span><span class='op'>&lt;</span><span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;&gt;</span> {
+        <span class='kw'>let</span> <span class='ident'>from</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>current_version</span>());
+        <span class='kw'>if</span> <span class='ident'>from</span>.<span class='ident'>is_none</span>() {
+            <span class='kw'>return</span> <span class='prelude-val'>Ok</span>(());
+        }
 
         <span class='kw'>let</span> <span class='ident'>migrated_versions</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>migrated_versions</span>());
         <span class='kw'>let</span> <span class='ident'>targets</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>migrations</span>.<span class='ident'>iter</span>()
@@ -390,16 +479,23 @@
             <span class='comment'>// some intermediary migrations were never executed).</span>
             .<span class='ident'>filter</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span>(<span class='ident'>v</span>, _)<span class='op'>|</span> <span class='ident'>migrated_versions</span>.<span class='ident'>contains</span>(<span class='ident'>v</span>));
 
-        <span class='kw'>for</span> (<span class='ident'>version</span>, <span class='ident'>migration</span>) <span class='kw'>in</span> <span class='ident'>targets</span> {
+        <span class='kw'>for</span> (<span class='kw-2'>&amp;</span><span class='ident'>version</span>, <span class='ident'>migration</span>) <span class='kw'>in</span> <span class='ident'>targets</span> {
             <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;Reverting migration {:?}: {}&quot;</span>, <span class='ident'>version</span>, <span class='ident'>migration</span>.<span class='ident'>description</span>());
-            <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>revert_migration</span>(<span class='ident'>migration</span>));
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>revert_migration</span>(<span class='ident'>migration</span>) {
+                <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>Error</span>::<span class='ident'>Migration</span> {
+                    <span class='ident'>version</span>: <span class='ident'>version</span>,
+                    <span class='ident'>description</span>: <span class='ident'>migration</span>.<span class='ident'>description</span>(),
+                    <span class='ident'>direction</span>: <span class='ident'>Direction</span>::<span class='ident'>Down</span>,
+                    <span class='ident'>error</span>: <span class='ident'>err</span>,
+                });
+            }
         }
 
         <span class='prelude-val'>Ok</span>(())
     }
 
     <span class='doccomment'>/// Migrate to the specified version (inclusive).</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>up</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>to</span>: <span class='ident'>Version</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>up</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>to</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>Error</span><span class='op'>&lt;</span><span class='ident'>T</span>::<span class='ident'>Error</span><span class='op'>&gt;&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>migrated_versions</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>migrated_versions</span>());
         <span class='kw'>let</span> <span class='ident'>targets</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>migrations</span>.<span class='ident'>iter</span>()
             <span class='comment'>// Execute all versions upwards until the specified version (inclusive):</span>
@@ -408,9 +504,16 @@
             <span class='comment'>// some intermediary migrations were previously executed).</span>
             .<span class='ident'>filter</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span>(<span class='ident'>v</span>, _)<span class='op'>|</span> <span class='op'>!</span><span class='ident'>migrated_versions</span>.<span class='ident'>contains</span>(<span class='ident'>v</span>));
 
-        <span class='kw'>for</span> (<span class='ident'>version</span>, <span class='ident'>migration</span>) <span class='kw'>in</span> <span class='ident'>targets</span> {
+        <span class='kw'>for</span> (<span class='kw-2'>&amp;</span><span class='ident'>version</span>, <span class='ident'>migration</span>) <span class='kw'>in</span> <span class='ident'>targets</span> {
             <span class='macro'>info</span><span class='macro'>!</span>(<span class='string'>&quot;Applying migration {:?}: {}&quot;</span>, <span class='ident'>version</span>, <span class='ident'>migration</span>.<span class='ident'>description</span>());
-            <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>apply_migration</span>(<span class='ident'>migration</span>));
+            <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Err</span>(<span class='ident'>err</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>adapter</span>.<span class='ident'>apply_migration</span>(<span class='ident'>migration</span>) {
+                <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>Error</span>::<span class='ident'>Migration</span> {
+                    <span class='ident'>version</span>: <span class='ident'>version</span>,
+                    <span class='ident'>description</span>: <span class='ident'>migration</span>.<span class='ident'>description</span>(),
+                    <span class='ident'>direction</span>: <span class='ident'>Direction</span>::<span class='ident'>Up</span>,
+                    <span class='ident'>error</span>: <span class='ident'>err</span>,
+                });
+            }
         }
 
         <span class='prelude-val'>Ok</span>(())
@@ -419,29 +522,40 @@
 
 <span class='comment'>// Tests whether a `Version` is within a range defined by the exclusive `low` and the inclusive</span>
 <span class='comment'>// `high` bounds.</span>
-<span class='kw'>fn</span> <span class='ident'>within_range</span>(<span class='ident'>version</span>: <span class='ident'>Version</span>, <span class='ident'>low</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>, <span class='ident'>high</span>: <span class='ident'>Version</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-    <span class='comment'>// Inclusive upper bound:</span>
-    <span class='kw'>if</span> <span class='ident'>version</span> <span class='op'>&gt;</span> <span class='ident'>high</span> {
-        <span class='kw'>return</span> <span class='boolvalue'>false</span>;
-    }
-
-    <span class='comment'>// Exclusive lower bound:</span>
-    <span class='kw'>match</span> <span class='ident'>low</span> {
-        <span class='prelude-val'>Some</span>(<span class='ident'>low</span>) <span class='op'>=&gt;</span> <span class='ident'>version</span> <span class='op'>&gt;</span> <span class='ident'>low</span>,
-        <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> <span class='boolvalue'>true</span>,
+<span class='kw'>fn</span> <span class='ident'>within_range</span>(<span class='ident'>version</span>: <span class='ident'>Version</span>, <span class='ident'>low</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>, <span class='ident'>high</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Version</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+    <span class='kw'>match</span> (<span class='ident'>low</span>, <span class='ident'>high</span>) {
+        (<span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>) <span class='op'>=&gt;</span> <span class='bool-val'>true</span>,
+        (<span class='prelude-val'>Some</span>(<span class='ident'>low</span>), <span class='prelude-val'>None</span>) <span class='op'>=&gt;</span> <span class='ident'>version</span> <span class='op'>&gt;</span> <span class='ident'>low</span>,
+        (<span class='prelude-val'>None</span>, <span class='prelude-val'>Some</span>(<span class='ident'>high</span>)) <span class='op'>=&gt;</span> <span class='ident'>version</span> <span class='op'>&lt;=</span> <span class='ident'>high</span>,
+        (<span class='prelude-val'>Some</span>(<span class='ident'>low</span>), <span class='prelude-val'>Some</span>(<span class='ident'>high</span>)) <span class='op'>=&gt;</span> <span class='ident'>version</span> <span class='op'>&gt;</span> <span class='ident'>low</span> <span class='op'>&amp;&amp;</span> <span class='ident'>version</span> <span class='op'>&lt;=</span> <span class='ident'>high</span>,
     }
 }
 
 <span class='attribute'>#[<span class='ident'>test</span>]</span>
 <span class='kw'>fn</span> <span class='ident'>test_within_range</span>() {
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>0</span>, <span class='prelude-val'>None</span>, <span class='number'>5</span>));
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>5</span>, <span class='prelude-val'>None</span>, <span class='number'>5</span>));
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>6</span>, <span class='prelude-val'>None</span>, <span class='number'>5</span>));
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>1</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='number'>5</span>));
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>2</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='number'>5</span>));
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>3</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='number'>5</span>));
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>5</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='number'>5</span>));
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>6</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='number'>5</span>));
+    <span class='comment'>// no lower or upper bound</span>
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>0</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>42</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>100000</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>None</span>));
+
+    <span class='comment'>// both lower and upper bounds</span>
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>1</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>2</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>3</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>5</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>6</span>, <span class='prelude-val'>Some</span>(<span class='number'>2</span>), <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
+
+    <span class='comment'>// lower bound only</span>
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>0</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>), <span class='prelude-val'>None</span>));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>4</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>), <span class='prelude-val'>None</span>));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>5</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>), <span class='prelude-val'>None</span>));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>6</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>), <span class='prelude-val'>None</span>));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>60</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>), <span class='prelude-val'>None</span>));
+
+    <span class='comment'>// upper bound only</span>
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>0</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>within_range</span>(<span class='number'>5</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
+    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='op'>!</span><span class='ident'>within_range</span>(<span class='number'>6</span>, <span class='prelude-val'>None</span>, <span class='prelude-val'>Some</span>(<span class='number'>5</span>)));
 }
 </pre>
 </section>

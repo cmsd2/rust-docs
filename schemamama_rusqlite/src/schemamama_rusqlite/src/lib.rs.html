@@ -452,7 +452,7 @@
 
         <span class='ident'>migrator</span>.<span class='ident'>register</span>(<span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>CreateUsers</span>));
 
-        <span class='ident'>migrator</span>.<span class='ident'>up</span>(<span class='number'>1</span>).<span class='ident'>unwrap</span>();
+        <span class='ident'>migrator</span>.<span class='ident'>up</span>(<span class='prelude-val'>Some</span>(<span class='number'>1</span>)).<span class='ident'>unwrap</span>();
 
         <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>migrator</span>.<span class='ident'>current_version</span>().<span class='ident'>unwrap</span>(), <span class='prelude-val'>Some</span>(<span class='number'>1</span>));
 

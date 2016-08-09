@@ -47,7 +47,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-41' class='srclink' href='../../src/rusqlite/types.rs.html#77-87' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-40' class='srclink' href='../../src/rusqlite/types.rs.html#77-87' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait FromSql: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a> {
     unsafe fn <a href='#tymethod.column_result' class='fnname'>column_result</a>(stmt: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut </a><a class='type' href='../../rusqlite/types/type.sqlite3_stmt.html' title='rusqlite::types::sqlite3_stmt'>sqlite3_stmt</a>, col: <a class='type' href='../../libc/type.c_int.html' title='libc::c_int'>c_int</a>) -&gt; <a class='type' href='../../rusqlite/type.Result.html' title='rusqlite::Result'>Result</a>&lt;Self&gt;;
 
@@ -73,7 +73,7 @@ attempting to retrieve the value.</p>
 <li><code>impl FromSql for <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></li>
 <li><code>impl FromSql for <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;</code></li>
 <li><code>impl FromSql for <a class='struct' href='../../time/struct.Timespec.html' title='time::Timespec'>Timespec</a></code></li>
-<li><code>impl&lt;T: <a class='trait' href='../../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt; FromSql for <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;T&gt;</code></li>
+<li><code>impl&lt;T:&nbsp;<a class='trait' href='../../rusqlite/types/trait.FromSql.html' title='rusqlite::types::FromSql'>FromSql</a>&gt; FromSql for <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;T&gt;</code></li>
 </ul><script type="text/javascript" async
                          src="../../implementors/rusqlite/types/trait.FromSql.js">
                  </script></section>
