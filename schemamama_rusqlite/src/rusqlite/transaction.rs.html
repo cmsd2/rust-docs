@@ -359,8 +359,8 @@
             <span class='ident'>Transaction</span> {
                 <span class='ident'>conn</span>: <span class='ident'>conn</span>,
                 <span class='ident'>depth</span>: <span class='number'>0</span>,
-                <span class='ident'>commit</span>: <span class='bool-val'>false</span>,
-                <span class='ident'>finished</span>: <span class='bool-val'>false</span>,
+                <span class='ident'>commit</span>: <span class='boolvalue'>false</span>,
+                <span class='ident'>finished</span>: <span class='boolvalue'>false</span>,
             }
         })
     }
@@ -396,8 +396,8 @@
             <span class='ident'>Transaction</span> {
                 <span class='ident'>conn</span>: <span class='self'>self</span>.<span class='ident'>conn</span>,
                 <span class='ident'>depth</span>: <span class='self'>self</span>.<span class='ident'>depth</span> <span class='op'>+</span> <span class='number'>1</span>,
-                <span class='ident'>commit</span>: <span class='bool-val'>false</span>,
-                <span class='ident'>finished</span>: <span class='bool-val'>false</span>,
+                <span class='ident'>commit</span>: <span class='boolvalue'>false</span>,
+                <span class='ident'>finished</span>: <span class='boolvalue'>false</span>,
             }
         })
     }
@@ -414,12 +414,12 @@
 
     <span class='doccomment'>/// Set the transaction to commit at its completion.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_commit</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) {
-        <span class='self'>self</span>.<span class='ident'>commit</span> <span class='op'>=</span> <span class='bool-val'>true</span>
+        <span class='self'>self</span>.<span class='ident'>commit</span> <span class='op'>=</span> <span class='boolvalue'>true</span>
     }
 
     <span class='doccomment'>/// Set the transaction to rollback at its completion.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_rollback</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) {
-        <span class='self'>self</span>.<span class='ident'>commit</span> <span class='op'>=</span> <span class='bool-val'>false</span>
+        <span class='self'>self</span>.<span class='ident'>commit</span> <span class='op'>=</span> <span class='boolvalue'>false</span>
     }
 
     <span class='doccomment'>/// A convenience method which consumes and commits a transaction.</span>
@@ -428,7 +428,7 @@
     }
 
     <span class='kw'>fn</span> <span class='ident'>commit_</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
-        <span class='self'>self</span>.<span class='ident'>finished</span> <span class='op'>=</span> <span class='bool-val'>true</span>;
+        <span class='self'>self</span>.<span class='ident'>finished</span> <span class='op'>=</span> <span class='boolvalue'>true</span>;
         <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>execute_batch</span>(<span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>depth</span> <span class='op'>==</span> <span class='number'>0</span> {
             <span class='string'>&quot;COMMIT&quot;</span>
         } <span class='kw'>else</span> {
@@ -442,7 +442,7 @@
     }
 
     <span class='kw'>fn</span> <span class='ident'>rollback_</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
-        <span class='self'>self</span>.<span class='ident'>finished</span> <span class='op'>=</span> <span class='bool-val'>true</span>;
+        <span class='self'>self</span>.<span class='ident'>finished</span> <span class='op'>=</span> <span class='boolvalue'>true</span>;
         <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>execute_batch</span>(<span class='kw'>if</span> <span class='self'>self</span>.<span class='ident'>depth</span> <span class='op'>==</span> <span class='number'>0</span> {
             <span class='string'>&quot;ROLLBACK&quot;</span>
         } <span class='kw'>else</span> {
@@ -461,9 +461,9 @@
 
     <span class='kw'>fn</span> <span class='ident'>finish_</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
         <span class='kw'>match</span> (<span class='self'>self</span>.<span class='ident'>finished</span>, <span class='self'>self</span>.<span class='ident'>commit</span>) {
-            (<span class='bool-val'>true</span>, _) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(()),
-            (<span class='bool-val'>false</span>, <span class='bool-val'>true</span>) <span class='op'>=&gt;</span> <span class='self'>self</span>.<span class='ident'>commit_</span>(),
-            (<span class='bool-val'>false</span>, <span class='bool-val'>false</span>) <span class='op'>=&gt;</span> <span class='self'>self</span>.<span class='ident'>rollback_</span>(),
+            (<span class='boolvalue'>true</span>, _) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(()),
+            (<span class='boolvalue'>false</span>, <span class='boolvalue'>true</span>) <span class='op'>=&gt;</span> <span class='self'>self</span>.<span class='ident'>commit_</span>(),
+            (<span class='boolvalue'>false</span>, <span class='boolvalue'>false</span>) <span class='op'>=&gt;</span> <span class='self'>self</span>.<span class='ident'>rollback_</span>(),
         }
     }
 }
