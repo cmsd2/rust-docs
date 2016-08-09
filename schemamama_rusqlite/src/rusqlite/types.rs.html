@@ -568,7 +568,7 @@
     <span class='doccomment'>/// by `Row::get_checked` to confirm that the column contains a valid type before</span>
     <span class='doccomment'>/// attempting to retrieve the value.</span>
     <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>column_has_valid_sqlite_type</span>(_: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, _: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
-        <span class='bool-val'>true</span>
+        <span class='boolvalue'>true</span>
     }
 }
 
@@ -589,7 +589,7 @@
 <span class='kw'>impl</span> <span class='ident'>ToSql</span> <span class='kw'>for</span> <span class='ident'>bool</span> {
     <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>bind_parameter</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>stmt</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, <span class='ident'>col</span>: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='ident'>c_int</span> {
         <span class='kw'>match</span> <span class='op'>*</span><span class='self'>self</span> {
-            <span class='bool-val'>true</span> <span class='op'>=&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_bind_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>, <span class='number'>1</span>),
+            <span class='boolvalue'>true</span> <span class='op'>=&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_bind_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>, <span class='number'>1</span>),
             _ <span class='op'>=&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_bind_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>, <span class='number'>0</span>),
         }
     }
@@ -701,8 +701,8 @@
 <span class='kw'>impl</span> <span class='ident'>FromSql</span> <span class='kw'>for</span> <span class='ident'>bool</span> {
     <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>column_result</span>(<span class='ident'>stmt</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>sqlite3_stmt</span>, <span class='ident'>col</span>: <span class='ident'>c_int</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span> {
         <span class='kw'>match</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_column_int</span>(<span class='ident'>stmt</span>, <span class='ident'>col</span>) {
-            <span class='number'>0</span> <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='bool-val'>false</span>),
-            _ <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='bool-val'>true</span>),
+            <span class='number'>0</span> <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='boolvalue'>false</span>),
+            _ <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='boolvalue'>true</span>),
         }
     }
 
@@ -858,8 +858,8 @@
     <span class='kw'>fn</span> <span class='ident'>test_mismatched_types</span>() {
         <span class='kw'>fn</span> <span class='ident'>is_invalid_column_type</span>(<span class='ident'>err</span>: <span class='ident'>Error</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
             <span class='kw'>match</span> <span class='ident'>err</span> {
-                <span class='ident'>Error</span>::<span class='ident'>InvalidColumnType</span> <span class='op'>=&gt;</span> <span class='bool-val'>true</span>,
-                _ <span class='op'>=&gt;</span> <span class='bool-val'>false</span>,
+                <span class='ident'>Error</span>::<span class='ident'>InvalidColumnType</span> <span class='op'>=&gt;</span> <span class='boolvalue'>true</span>,
+                _ <span class='op'>=&gt;</span> <span class='boolvalue'>false</span>,
             }
         }
 

@@ -2231,9 +2231,9 @@
                 <span class='kw'>const</span> <span class='ident'>SQLITE_SINGLETHREADED_MUTEX_MAGIC</span>: <span class='ident'>usize</span> <span class='op'>=</span> <span class='number'>8</span>;
                 <span class='kw'>let</span> <span class='ident'>mutex_ptr</span> <span class='op'>=</span> <span class='ident'>ffi</span>::<span class='ident'>sqlite3_mutex_alloc</span>(<span class='number'>0</span>);
                 <span class='kw'>let</span> <span class='ident'>is_singlethreaded</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>mutex_ptr</span> <span class='kw'>as</span> <span class='ident'>usize</span> <span class='op'>==</span> <span class='ident'>SQLITE_SINGLETHREADED_MUTEX_MAGIC</span> {
-                    <span class='bool-val'>true</span>
+                    <span class='boolvalue'>true</span>
                 } <span class='kw'>else</span> {
-                    <span class='bool-val'>false</span>
+                    <span class='boolvalue'>false</span>
                 };
                 <span class='ident'>ffi</span>::<span class='ident'>sqlite3_mutex_free</span>(<span class='ident'>mutex_ptr</span>);
                 <span class='kw'>if</span> <span class='ident'>is_singlethreaded</span> {
@@ -2381,7 +2381,7 @@
         <span class='ident'>Statement</span> {
             <span class='ident'>conn</span>: <span class='ident'>conn</span>,
             <span class='ident'>stmt</span>: <span class='ident'>stmt</span>,
-            <span class='ident'>needs_reset</span>: <span class='bool-val'>false</span>,
+            <span class='ident'>needs_reset</span>: <span class='boolvalue'>false</span>,
             <span class='ident'>column_count</span>: <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>sqlite3_column_count</span>(<span class='ident'>stmt</span>) },
         }
     }
@@ -2474,7 +2474,7 @@
             <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>bind_parameters</span>(<span class='ident'>params</span>));
         }
 
-        <span class='self'>self</span>.<span class='ident'>needs_reset</span> <span class='op'>=</span> <span class='bool-val'>true</span>;
+        <span class='self'>self</span>.<span class='ident'>needs_reset</span> <span class='op'>=</span> <span class='boolvalue'>true</span>;
         <span class='prelude-val'>Ok</span>(<span class='ident'>Rows</span>::<span class='ident'>new</span>(<span class='self'>self</span>))
     }
 
@@ -2556,7 +2556,7 @@
             <span class='kw'>unsafe</span> {
                 <span class='ident'>ffi</span>::<span class='ident'>sqlite3_reset</span>(<span class='self'>self</span>.<span class='ident'>stmt</span>);
             };
-            <span class='self'>self</span>.<span class='ident'>needs_reset</span> <span class='op'>=</span> <span class='bool-val'>false</span>;
+            <span class='self'>self</span>.<span class='ident'>needs_reset</span> <span class='op'>=</span> <span class='boolvalue'>false</span>;
         }
     }
 
@@ -2673,7 +2673,7 @@
         <span class='ident'>Rows</span> {
             <span class='ident'>stmt</span>: <span class='ident'>stmt</span>,
             <span class='ident'>current_row</span>: <span class='ident'>Rc</span>::<span class='ident'>new</span>(<span class='ident'>Cell</span>::<span class='ident'>new</span>(<span class='number'>0</span>)),
-            <span class='ident'>failed</span>: <span class='bool-val'>false</span>,
+            <span class='ident'>failed</span>: <span class='boolvalue'>false</span>,
         }
     }
 
@@ -2704,7 +2704,7 @@
             }
             <span class='ident'>ffi</span>::<span class='ident'>SQLITE_DONE</span> <span class='op'>=&gt;</span> <span class='prelude-val'>None</span>,
             <span class='ident'>code</span> <span class='op'>=&gt;</span> {
-                <span class='self'>self</span>.<span class='ident'>failed</span> <span class='op'>=</span> <span class='bool-val'>true</span>;
+                <span class='self'>self</span>.<span class='ident'>failed</span> <span class='op'>=</span> <span class='boolvalue'>true</span>;
                 <span class='prelude-val'>Some</span>(<span class='prelude-val'>Err</span>(<span class='self'>self</span>.<span class='ident'>stmt</span>.<span class='ident'>conn</span>.<span class='ident'>decode_result</span>(<span class='ident'>code</span>).<span class='ident'>unwrap_err</span>()))
             }
         }
