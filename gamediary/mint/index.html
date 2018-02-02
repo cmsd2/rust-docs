@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `mint` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, mint">
+
+    <title>mint - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'>Crate mint</p><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'mint', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>mint</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/mint/lib.rs.html#1-17' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Mint - Math interoperability standard types.</p>
+
+<p>Defines basic math types useful for computer graphics.
+Designed to serve as an interoperability standard between libraries.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ColumnMatrix2.html"
+                                  title='struct mint::ColumnMatrix2'>ColumnMatrix2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ColumnMatrix3.html"
+                                  title='struct mint::ColumnMatrix3'>ColumnMatrix3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ColumnMatrix4.html"
+                                  title='struct mint::ColumnMatrix4'>ColumnMatrix4</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ColumnMatrix3x2.html"
+                                  title='struct mint::ColumnMatrix3x2'>ColumnMatrix3x2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ColumnMatrix4x3.html"
+                                  title='struct mint::ColumnMatrix4x3'>ColumnMatrix4x3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.EulerAngles.html"
+                                  title='struct mint::EulerAngles'>EulerAngles</a></td>
+                           <td class='docblock-short'>
+                                <p>Abstract set of Euler angles in 3D space. The basis of angles
+is defined by the generic parameter <code>B</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.LeftQuaternion.html"
+                                  title='struct mint::LeftQuaternion'>LeftQuaternion</a></td>
+                           <td class='docblock-short'>
+                               [<div class='stab deprecated'>Deprecated</div>] <p>Standard quaternion corresponding to a left-handed
+rotation matrix. The exact association of the left-handed basis
+that is encoded by this quaternion and a right-handed one
+is presented by <code>B</code> (for &quot;basis&quot;) generic parameter.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Point2.html"
+                                  title='struct mint::Point2'>Point2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Point3.html"
+                                  title='struct mint::Point3'>Point3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Quaternion.html"
+                                  title='struct mint::Quaternion'>Quaternion</a></td>
+                           <td class='docblock-short'>
+                                <p>Standard quaternion represented by the scalar and vector parts.
+Useful for representing rotation in 3D space.
+Corresponds to a right-handed rotation matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RowMatrix2.html"
+                                  title='struct mint::RowMatrix2'>RowMatrix2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RowMatrix3.html"
+                                  title='struct mint::RowMatrix3'>RowMatrix3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RowMatrix4.html"
+                                  title='struct mint::RowMatrix4'>RowMatrix4</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RowMatrix2x3.html"
+                                  title='struct mint::RowMatrix2x3'>RowMatrix2x3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RowMatrix3x4.html"
+                                  title='struct mint::RowMatrix3x4'>RowMatrix3x4</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Vector2.html"
+                                  title='struct mint::Vector2'>Vector2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Vector3.html"
+                                  title='struct mint::Vector3'>Vector3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Vector4.html"
+                                  title='struct mint::Vector4'>Vector4</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ExtraXYZ.html"
+                                  title='enum mint::ExtraXYZ'>ExtraXYZ</a></td>
+                           <td class='docblock-short'>
+                                <p>Extrinsic rotation around X, then Y, then Z axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ExtraZXZ.html"
+                                  title='enum mint::ExtraZXZ'>ExtraZXZ</a></td>
+                           <td class='docblock-short'>
+                                <p>Extrinsic rotation around Z, then X, then Z axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ExtraZYX.html"
+                                  title='enum mint::ExtraZYX'>ExtraZYX</a></td>
+                           <td class='docblock-short'>
+                                <p>Extrinsic rotation around Z, then Y, then X axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.IntraXYZ.html"
+                                  title='enum mint::IntraXYZ'>IntraXYZ</a></td>
+                           <td class='docblock-short'>
+                                <p>Intrinsic rotation around X, then Y, then Z axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.IntraZXZ.html"
+                                  title='enum mint::IntraZXZ'>IntraZXZ</a></td>
+                           <td class='docblock-short'>
+                                <p>Intrinsic rotation around Z, then X, then Z axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.IntraZYX.html"
+                                  title='enum mint::IntraZYX'>IntraZYX</a></td>
+                           <td class='docblock-short'>
+                                <p>Intrinsic rotation around Z, then Y, then X axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.MirrorX.html"
+                                  title='enum mint::MirrorX'>MirrorX</a></td>
+                           <td class='docblock-short'>
+                                <p>Basis handedness change by mirroring X axis: x&#39;,y&#39;,z&#39; = -x,y,z</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.MirrorY.html"
+                                  title='enum mint::MirrorY'>MirrorY</a></td>
+                           <td class='docblock-short'>
+                                <p>Basis handedness change by mirroring Y axis: x&#39;,y&#39;,z&#39; = x,-y,z</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.MirrorZ.html"
+                                  title='enum mint::MirrorZ'>MirrorZ</a></td>
+                           <td class='docblock-short'>
+                                <p>Basis handedness change by mirroring Z axis: x&#39;,y&#39;,z&#39; = x,y,-z</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.SwapXY.html"
+                                  title='enum mint::SwapXY'>SwapXY</a></td>
+                           <td class='docblock-short'>
+                                <p>Basis handedness change by swapping X and Y axis: x&#39;,y&#39;,z&#39; = y,x,z</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.SwapYZ.html"
+                                  title='enum mint::SwapYZ'>SwapYZ</a></td>
+                           <td class='docblock-short'>
+                                <p>Basis handedness change by swapping Y and Z axis: x&#39;,y&#39;,z&#39; = x,z,y</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.SwapZX.html"
+                                  title='enum mint::SwapZX'>SwapZX</a></td>
+                           <td class='docblock-short'>
+                                <p>Basis handedness change by swapping Z and X axis: x&#39;,y&#39;,z&#39; = z,y,x</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>↑</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>↓</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>↹</dt>
+                    <dd>Switch tab</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt style="width:31px;">+ / -</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "mint";
+    </script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

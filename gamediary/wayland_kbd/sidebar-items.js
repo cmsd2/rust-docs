@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["MappedKeyboardError",""]],"mod":[["keysyms",""]],"struct":[["MappedKeyboard","A wayland keyboard mapped to its keymap"],["ModifiersState","Represents the current state of the keyboard modifiers"]],"trait":[["Handler",""]]});
